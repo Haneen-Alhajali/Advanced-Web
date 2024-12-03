@@ -1,0 +1,102 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #192841;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #1d2b45;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    color: #b0c4de;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: #273754;
+    color: #fff;
+}
+
+/* Admin section at the bottom of sidebar */
+.footer {
+    text-align: left;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between Admin Name and Logout */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #c4c4c4;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.admin-name {
+    font-size: 14px;
+}
+
+.logout {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+/* Main content styles */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #22304a;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    color: #b0c4de;
+}

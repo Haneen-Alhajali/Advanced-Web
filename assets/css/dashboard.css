@@ -1,0 +1,81 @@
+@import 'colors.css';
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color-dark);
+    color: var(--text-color-light);
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: var(--background-color-light);
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    color: var(--text-color-light);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 300px;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 1rem;
+}
+
+.sidebar nav ul li a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: var(--background-color-light2);
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.admin-details span {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.admin-details a {
+    color: red;
+    text-decoration: none;
+}
+
+.admin-details a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.overview h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

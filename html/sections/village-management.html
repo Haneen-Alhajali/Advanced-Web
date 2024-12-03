@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Management</title>
+    <link rel="stylesheet" href="/assets/css/village_mang.css">
+</head>
+<body>
+
+    <!-- Main Content Area -->
+    <main class="content">
+        <button class="add-new">Add New Village</button>
+        <div class="village-list">
+            <h3>View Village List</h3>
+            <input type="text" class="search-box" placeholder="Search villages...">
+            <div class="sort-page-container">
+                <div class="sort">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option value="default">Default</option>
+                        <option value="name">Alphabetical</option>
+                    </select>
+                </div>
+                <!-- Pagination moved below the sort section -->
+                <div class="pagination">
+                    <span>Page:</span>
+                    <button class="prev">Prev</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
+            
+            <div class="village-item">
+                <span>Jabalia - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Beit Lahia - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Quds - West Bank</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Shejaiya - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Hebron - West Bank</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for other villages -->
+        </div>
+    </main>
+  
+</body>
+</html>

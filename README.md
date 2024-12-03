@@ -88,7 +88,7 @@
  <a name="roles"></a>
 ## 👥 Roles:
 - 👤 *User*: Explore village demographics, geographical data, and public facilities without permissions to add, edit, or manage data. 
-- 👥 *Admin*: Full management access to village data, including CRUD operations.
+- 👥 *Admin*: Full management access to village data.
   <br>
  <br>
 

@@ -1,0 +1,33 @@
+@import 'colors.css';
+
+.overview h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.stat-item {
+    flex: 1;
+    background-color: var(--background-color-light3);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.charts {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.chart {
+    flex: 1;
+    background-color: var(--background-color-light4);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}

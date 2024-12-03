@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Village Management System Dashboard</title>
-    <link rel="stylesheet" href="/assets/css/dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Management System</title>
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Overview</a></li>
-                <li><a href="#">Village Management</a></li>
-                <li><a href="#">Chat</a></li>
-                <li><a href="#">Gallery</a></li>
-            </ul>
-        </nav>
-        <div class="admin-info"> 
-            <img src="/assets/images/admin1-avatar.png" alt="Admin Avatar" class="admin-avatar"> 
-            <div class="admin-details">
-                <span>Admin Name</span> 
-                <a href="#">Logout</a>
-            </div>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h1>Dashboard</h1>
+      <ul>
+        <li><button class="sidebar-btn" data-file="overview.html">Overview</button></li>
+        <li><button class="sidebar-btn" data-file="village-management.html">Village Management</button></li>
+        <li><button class="sidebar-btn" data-file="chat.html">Chat</button></li>
+        <li><button class="sidebar-btn" data-file="gallery.html">Gallery</button></li>
+      </ul>
+      <div class="admin-info">
+        <img src="/assets/images/admin1-avatar.png" alt="Admin Avatar" class="admin-avatar">
+        <div class="admin-details">
+          <span>Admin Name</span>
+          <a href="../index.html">Logout</a>
         </div>
-    </div>
-    <div class="main-content">
-    </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content" id="main-content">
+    </main>
+
+  <script src="/assets/js/sidebar-script.js"></script>
 </body>
 </html>

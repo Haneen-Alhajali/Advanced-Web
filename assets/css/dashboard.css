@@ -10,10 +10,11 @@ body {
 .sidebar {
     width: 200px;
     background-color: var(--background-color-light);
-    padding: 20px;
-    height: 100vh;
+    padding: 15px;
+    height: 95.2vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar h1 {
@@ -22,31 +23,36 @@ body {
     margin-bottom: 2rem;
 }
 
-.sidebar nav ul {
+.sidebar ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 300px;
 }
 
-.sidebar nav ul li {
+.sidebar ul li {
     margin-bottom: 1rem;
 }
 
-.sidebar nav ul li a {
-    color: var(--text-color-light);
-    text-decoration: none;
+.sidebar-btn {
     display: block;
-    padding: 0.5rem;
-    border-radius: 4px;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-color-dark);
+    padding: 0.3rem;
+    text-align: left;
+    font-size: 1.1rem;
+    cursor: pointer;
 }
 
-.sidebar nav ul li a:hover {
+.sidebar-btn:hover {
     background-color: var(--background-color-light2);
+    outline: 14px solid var(--background-color-light2);
 }
 
 .admin-info {
     display: flex;
     align-items: center;
+    margin-top: auto;
 }
 
 .admin-avatar {
@@ -56,21 +62,28 @@ body {
     margin-right: 10px;
 }
 
+.admin-details {
+    display: flex;
+    flex-direction: row;
+}
+
 .admin-details span {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .admin-details a {
     color: red;
     text-decoration: none;
+    padding-left: 15px;
+    font-size: 0.9rem;
 }
 
 .admin-details a:hover {
     text-decoration: underline;
 }
 
-.main-content {
+#main-content {
     flex: 1;
     padding: 20px;
 }

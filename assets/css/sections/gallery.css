@@ -1,0 +1,54 @@
+@import '../colors.css';
+/* Gallery Styling */
+.gallery {
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .add-image-btn {
+    background-color:var(--background-color-light3) ;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-image-btn:hover {
+    background-color: var(--background-color-light2);
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .gallery-item {
+    background-color: var(--background-color-light2);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .gallery-item p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 600px) {
+    .gallery-item {
+      padding: 5px;
+    }
+    .add-image-btn {
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+  }
+  

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Management</title>
+   <link rel="stylesheet" href="../assets/css/sections/village-management.css">
+</head>
+<body>
+
+    <!-- Main Content Area -->
+    <main class="content">
+        <button class="add-new">Add New Village</button>
+        <div class="village-list">
+            <h3>View Village List</h3>
+            <input type="text" class="search-box" placeholder="Search villages...">
+            <div class="sort-page-container">
+                <div class="sort">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option value="default">Default</option>
+                        <option value="name">Alphabetical</option>
+                    </select>
+                </div>
+                <!-- Pagination moved below the sort section -->
+                <div class="pagination">
+                    <span>Page:</span>
+                    <button class="prev">Prev</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
+            
+            <div class="village-item">
+                <span>Jabalia - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Beit Lahia - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Quds - West Bank</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Shejaiya - Gaza Strip</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+            <div class="village-item">
+                <span>Hebron - West Bank</span>
+                <div class="buttons">
+                    <button class="view">View</button>
+                    <button class="update">Update Village</button>
+                    <button class="delete">Delete Village</button>
+                    <button class="update-data">Update Demographic Data</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const searchBox = document.querySelector(".search-box");
+    const villageItems = document.querySelectorAll(".village-item");
+    
+    searchBox.addEventListener("input", () => {
+        const searchText = searchBox.value.toLowerCase().trim();
+        console.log("Search Text:", searchText);
+        
+        villageItems.forEach(item => {
+            const villageName = item.querySelector("span").textContent.toLowerCase().trim();
+            console.log("Village Name:", villageName);
+            
+            if (villageName.includes(searchText)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+});
+
+        </script>
+        
+
+</body>
+</html>

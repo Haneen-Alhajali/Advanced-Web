@@ -1,4 +1,4 @@
-@import 'colors.css';
+@import '../colors.css';
 
 .overview h1 {
     font-size: 1.5rem;

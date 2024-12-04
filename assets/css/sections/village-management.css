@@ -12,7 +12,7 @@ body {
 .dashboard {
     display: flex;
     height: 100vh;
-    flex-direction: column; /* لتغيير ترتيب العناصر على الشاشات الصغيرة */
+    flex-direction: column;
 }
 
 /* Main content */
@@ -43,18 +43,18 @@ body {
 }
 
 .search-box {
-    width: 98%; /* قصر الـ search-box وجعلها أقل امتدادًا */
+    width: 98%; 
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* حواف خفيفة بلون أبيض */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
 }
 
 .search-box::placeholder {
     color: var(--text-color-light);
-    opacity: 0.7; /* إضافة شفافية بسيطة */
+    opacity: 0.7;
 }
 
 /* Sort and Pagination Container */
@@ -75,10 +75,10 @@ body {
 .sort select {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* حواف خفيفة بلون أبيض */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
-    margin-left: 10px; /* إضافة مسافة صغيرة بين كلمة "Sort" و select */
+    margin-left: 10px;
 }
 .sort select:focus {
     outline: none;
@@ -100,12 +100,12 @@ body {
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
-    margin-left: 5px; /* تقليل المسافة بين الأزرار */
+    margin-left: 5px;
 }
 
 /* Village Items */
 .village-item {
-    display: flex !important; /* تأكيد عرض العناصر بنفس التنسيق */
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color-light2);
@@ -128,10 +128,9 @@ body {
 
 /* Responsive Styles */
 
-/* عند الأجهزة الصغيرة مثل الهواتف */
 @media (max-width: 768px) {
     .dashboard {
-        flex-direction: column; /* تغيير الاتجاه ليكون عمودي */
+        flex-direction: column;
     }
 
     .sort-page-container {
@@ -147,26 +146,24 @@ body {
     }
 
     .search-box {
-        width: 100%; /* التأكد من أن خانة البحث تأخذ العرض الكامل */
+        width: 100%;
     }
 
-    /* تغيير ترتيب العناصر في village-item */
     .village-item {
         flex-direction: column;
         align-items: flex-start;
     }
 
     .buttons button {
-        width: 100%; /* جعل الأزرار تحت بعضها البعض */
+        width: 100%;
         margin-bottom: 10px;
     }
 
     .add-new {
-        width: 100%; /* جعل الزر يأخذ العرض الكامل */
+        width: 100%;
     }
 }
 
-/* عند الشاشات الصغيرة جداً (الهواتف المحمولة الصغيرة) */
 @media (max-width: 480px) {
     .content {
         padding: 15px;

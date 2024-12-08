@@ -7,7 +7,7 @@
 <h1>Village Management System</h1> &nbsp;     
 </div>
 <div align="center">
-  <img src="logo.png" alt="logo image">
+<img src="/assets/images/VMS.png" alt="logo image" style="height: 200px; width: 100%; object-fit: contain;">
 </div>
 <br>
 <br>
@@ -37,6 +37,10 @@
 
 <a name="bw"></a>
 ## 🔨 Built With
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js (planned for Phase 2)
+- **Database**: LocalStorage (Phase 1), with potential for MongoDB or MySQL in future phases
+- **Libraries/Frameworks**: Bootstrap for styling and responsiveness
 <br>
 <br>
 
@@ -52,14 +56,16 @@
 > sh
 > git clone https://github.com/Haneen-Radad/Advanced-Web.git
 > 
-##### 2. 
+##### 2. Navigate to the project directory
 
+> sh
+>cd Advanced-Web
 > 
-##### 3. 
-
+##### 3. Open the project in your browser
+   - Locate and open the `index.html` file directly in a browser to view the system.
 > 
-##### 4. 
-
+##### 4. Run locally (optional)
+   - Use a local server such as Live Server in VS Code for best results.
 > 
 <br>
 <br>
@@ -71,24 +77,32 @@
 
 ## 2. Main Features
 ### 🛠️ Village Data Management
-- <strong> Allow users to list items they rarely use, such as tools, electronics, sports equipment, and more. Listings can be organized into various categories to facilitate item discovery.</strong>This was done by implementing CRUD operations to create, retrieve, update, and delete item listing and developing endpoints to handle different categories, enabling efficient filtering and searching.
+- Comprehensive CRUD operations for managing village data, including demographics, geographical information, and resources.
+- Interactive gallery for showcasing village facilities and landmarks.
   <br>
   
 ### 📊 User Roles and Permissions
-- <strong>User roles with specific permissions, including admin access for full management and user access for viewing data.</strong>
-<br>
+- Role-based access control:
+  - **Admins**: Full access to add, edit, and delete data.
+  - **Users**: View-only access to data.
+    <br>
 
 ### ⭐ User Experience
-- <strong>Intuitive and user-friendly interface with personalized recommendations and easy navigation.</strong>
- <br>
+- Clean, responsive design optimized for ease of use on multiple devices.
+- Personalized recommendations based on village data. <br>
  <br>
  <br>
  <br>
 
  <a name="roles"></a>
-## 👥 Roles:
-- 👤 *User*: Explore village demographics, geographical data, and public facilities without permissions to add, edit, or manage data. 
-- 👥 *Admin*: Full management access to village data.
+## 👥 Roles
+### 👤 User
+- View village data, demographics, and facilities.
+- Cannot add, edit, or delete any information.
+
+### 👥 Admin
+- Full control over the platform, including managing village data, user roles, and permissions.
+- Ability to add images to the gallery and oversee data updates.
   <br>
  <br>
 
@@ -96,8 +110,10 @@
 ## 📱 Contact
 * Haneed Alhaj - haneenradad2013@gmail.com
 * Shahd Yaseen - shadthabit@gmail.com
-* Aya - 
 <br>
+  <p align="center"><a href="https://github.com/Haneen-Radad/Advanced-Web/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Haneen-Radad/Advanced-Web" />
+</a> </p>
  <p align="right">(<a href="#readme-top">⬆️</a>)</p>
  <br>
 <br>

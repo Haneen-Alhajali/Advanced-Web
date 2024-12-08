@@ -1,7 +1,8 @@
 @import 'colors.css';
+
 body {
     margin: 0;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background-color-dark);
     display: flex;
     justify-content: center;
@@ -21,12 +22,15 @@ body {
     padding: 2rem;
     border-radius: 8px;
     width: 320px;
+    max-width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 h2 {
     margin: 0 0 1rem 0;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 label {
@@ -36,18 +40,20 @@ label {
 }
 
 input {
-    width: 92%;
+    width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: var(--text-color-light);
     border-radius: 5px;
-    background-color: #fff;;
+    background-color: #fff;
     font-size: 0.98rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
 }
 
-/* When the input field is focused or user starts typing */
 input:focus {
-    outline-color: var(--blue-color-light);
+    outline: 2px solid var(--blue-color-light);
+    outline-offset: 2px;
 }
 
 button {
@@ -59,10 +65,15 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    transition: all 0.2s ease-in-out;
 }
 
 button:hover {
     background-color: var(--blue-color-dark);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 p {
@@ -79,4 +90,38 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    input, button {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

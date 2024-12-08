@@ -1,4 +1,5 @@
-const galleryData = [
+// Retrieve gallery data from localStorage or initialize with default data
+const galleryData = JSON.parse(localStorage.getItem("galleryData")) || [
     {
       id: 1,
       imageUrl: "https://via.placeholder.com/150",
@@ -31,3 +32,5 @@ const galleryData = [
     },
   ];
   
+  // Exporting galleryData so other scripts can access it
+  export { galleryData };

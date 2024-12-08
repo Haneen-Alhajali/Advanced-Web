@@ -7,28 +7,29 @@
   <link rel="stylesheet" href="/assets/css/dashboard.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <h1>Dashboard</h1>
-      <ul>
-        <li><button class="sidebar-btn" data-file="overview.html">Overview</button></li>
-        <li><button class="sidebar-btn" data-file="village-management.html">Village Management</button></li>
-        <li><button class="sidebar-btn" data-file="chat.html">Chat</button></li>
-        <li><button class="sidebar-btn" data-file="gallery.html">Gallery</button></li>
-      </ul>
-      <div class="admin-info">
-        <img src="../assets/images/admin1-avatar.png" alt="Admin Avatar" class="admin-avatar">
-        <div class="admin-details">
-          <span>Admin Name</span>
-          <a href="../index.html">Logout</a>
-        </div>
+  <!-- Hamburger Button for Mobile Devices -->
+  <div class="hamburger-btn" id="hamburger-btn">&#9776;</div>
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <h1>Dashboard</h1>
+    <ul>
+      <li><button class="sidebar-btn" data-file="overview.html">Overview</button></li>
+      <li><button class="sidebar-btn" data-file="village-management.html">Village Management</button></li>
+      <li><button class="sidebar-btn" data-file="chat.html">Chat</button></li>
+      <li><button class="sidebar-btn" data-file="gallery.html">Gallery</button></li>
+    </ul>
+    <div class="user-info">
+      <img src="../assets/images/admin-avatar.png" alt="User Avatar" id="user-avatar" class="user-avatar">
+      <div class="user-details">
+        <span id="user-name">User Name</span>
+        <a href="../index.html">Logout</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Main Content -->
-    <main class="content" id="main-content">
-    </main>
+  <!-- Main Content -->
+  <main class="content" id="main-content"></main>
 
-  <script src="/assets/js/sidebar-script.js"></script>
+  <script type="module" src="/assets/js/sidebar-script.js"></script>
 </body>
 </html>

@@ -32,6 +32,12 @@ const imageUrl = document.getElementById("imageUrl");
 const imageFile = document.getElementById("imageFile");
 
 addImageBtn.addEventListener("click", () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+  }
   addImageModal.style.display = "block"; // Show the modal
 });
 

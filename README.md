@@ -7,7 +7,7 @@
 <h1>Village Management System</h1> &nbsp;     
 </div>
 <div align="center">
-<img src="/assets/images/VMS.png" alt="logo image" style="height: 200px; width: 100%; object-fit: contain;">
+<img src="/assets/images/VMS1.png" alt="logo image" style="height: 200px; width: 100%; object-fit: contain;">
 </div>
 <br>
 <br>

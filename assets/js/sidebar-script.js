@@ -35,7 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             });
           }
-          
+
+          // Load chart overview if overview page is loaded
+          if (file === "overview.html") {
+            loadChartOverview();
+            loadBarChartOverview();
+          }
         })
         .catch(error => {
           console.error(error.message);
@@ -62,3 +67,102 @@ function loadScript(src, callback) {
   };
   document.body.appendChild(script);
 }
+
+/**
+ * Function to genrate Charts for Overview Page
+ */
+function loadChartOverview() {
+  console.log("chartOverview.js: DOM fully loaded and parsed");
+
+  const ageData = [15, 25, 20, 30, 10];
+  const genderData = [45, 55];
+
+  const ageCtx = document.getElementById("ageChart")?.getContext("2d");
+  const genderCtx = document.getElementById("genderChart")?.getContext("2d");
+
+  if (ageCtx) {
+    new Chart(ageCtx, {
+      type: "pie",
+      data: {
+        labels: ["0-18", "19-35", "36-50", "51-65", "65+"],
+        datasets: [
+          {
+            data: ageData,
+            backgroundColor: ["#a74c65", "#2f71a3", "#a58c4d", "#3c8489", "#684eaf"],
+          },
+        ],
+      },
+      options: { responsive: true },
+    });
+  } else {
+    console.error("ageChart canvas not found!");
+  }
+
+  if (genderCtx) {
+    new Chart(genderCtx, {
+      type: "pie",
+      data: {
+        labels: ["Male", "Female"],
+        datasets: [
+          {
+            data: genderData,
+            backgroundColor: ["#2f71a3", "#a74c65"],
+          },
+        ],
+      },
+      options: { responsive: true },
+    });
+  } else {
+    console.error("genderChart canvas not found!");
+  }
+}
+
+
+
+ /*line chart */
+
+function loadBarChartOverview(){
+
+  const ctx = document.getElementById('barChart');
+  
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [     'Jabalia', 'Beit Lahia', 'Quds', 'Shejaiya', 'Hebron', 'Nablus','Ramallah','Beit Jala'  ],
+      datasets: [{
+        label: 'Population',
+        data: [50000, 40000, 30000, 45000, 250000,150000,100000,30000],
+
+        borderColor: [
+          'rgba(38,171,174,255)'
+      ],
+
+      backgroundColor:[
+        'rgba(56,94,106,255)'
+      ],
+
+        borderWidth: 1.5
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

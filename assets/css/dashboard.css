@@ -1,41 +1,53 @@
 @import 'colors.css';
 @import '/assets/css/sections/gallery.css';
 @import '/assets/css/sections/village-management.css';
-
+@import '/assets/css/sections/chat.css';
 
 body {
-
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background-color-dark);
     color: var(--text-color-light);
     display: flex;
+    flex-direction: row; /* Keep body as row layout */
+    min-height: 100vh;
 }
 
+/* Sidebar styles */
 .sidebar {
-    position: fixed;
-    width: 15vw;
+    width: 220px; /* Sidebar width on large screens */
     background-color: var(--background-color-light);
-    padding: 1vw;
-    height: 95.5vh;
+    padding: 15px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Start at the top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: width 0.3s ease, visibility 0.3s ease; /* Smooth transition when toggling sidebar */
+    overflow: hidden;
+}
+
+.sidebar.open {
+    visibility: visible; /* Make visible when open */
 }
 
 .sidebar h1 {
     color: var(--text-color-light);
-    font-size: 1.5vw;
-    margin-bottom: 2vw;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .sidebar ul li {
-    margin-bottom: 1vw;
+    margin-bottom: 1rem;
 }
 
 .sidebar-btn {
@@ -44,9 +56,9 @@ body {
     background: none;
     border: none;
     color: var(--text-color-dark);
-    padding: 0.3vw;
+    padding: 0.3rem;
     text-align: left;
-    font-size: 1.1vw;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
@@ -55,48 +67,109 @@ body {
     outline: 14px solid var(--background-color-light2);
 }
 
-.admin-info {
+/* User Info positioned at the bottom */
+.user-info {
     display: flex;
     align-items: center;
-    margin-top: auto;
+    margin-top: auto; /* Push user info to the bottom */
+    padding-bottom: 20%;
 }
 
-.admin-avatar {
+.user-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.admin-details {
+.user-details {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
 
-.admin-details span {
+.user-details span {
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 0.9rem;
 }
 
-.admin-details a {
+.user-details a {
     color: red;
     text-decoration: none;
     padding-left: 15px;
-    font-size: 0.9vw;
+    font-size: 0.9rem;
 }
 
-.admin-details a:hover {
+.user-details a:hover {
     text-decoration: underline;
 }
 
+/* Main content */
 #main-content {
     flex: 1;
-    padding: 1vw;
-    margin-left: 17vw;
-    width: 70vw;
+    padding: 20px;
+    margin-left: 250px; /* Space for the sidebar on larger screens */
+    transition: margin-left 0.3s ease; /* Smooth transition when toggling sidebar */
 }
 
-.overview h1 {
-    font-size: 2vw;
-    margin-bottom: 1rem;
+/* Hamburger button */
+.hamburger-btn {
+    display: none; /* Hidden by default on larger screens */
+    background-color: var(--background-color-light);
+    padding: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px; /* Ensure space for the button */
+    z-index: 110; /* Above other elements */
+    font-size: 2rem;
+    border: none;
+    color: var(--text-color-dark);
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 0; /* Collapsed sidebar width */
+        visibility: hidden; /* Sidebar hidden by default */
+    }
+
+    .sidebar.open {
+        width: 200px; /* Sidebar width when open */
+        visibility: visible;
+    }
+
+    .sidebar h1 {
+        padding-left: 22%;
+    }
+    #main-content {
+        margin-left: 50px;
+    }
+
+    #main-content.sidebar-open {
+        margin-left: 220px; /* Space for the sidebar when open */
+    }
+
+    .hamburger-btn {
+        display: block; /* Show hamburger button on small screens */
+    }
+}
+
+/* For screens less than 480px */
+@media screen and (max-width: 480px) {
+    .sidebar-btn {
+        font-size: 0.9rem; /* Smaller font size */
+    }
+
+    .user-avatar {
+        width: 30px; /* Smaller avatar for small screens */
+        height: 30px;
+    }
+
+    .user-details span,
+    .user-details a {
+        font-size: 0.8rem; /* Smaller font size for user details */
+    }
 }

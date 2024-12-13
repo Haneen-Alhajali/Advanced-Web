@@ -35,11 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             });
           }
+          
+          if (file === "village-management.html") {
+            loadScript("/assets/js/villageManegment.js", () => {
+              console.log("villagemanag.js loaded");
+            });
+          }   
 
           // Load chart overview if overview page is loaded
           if (file === "overview.html") {
             loadChartOverview();
             loadBarChartOverview();
+            initMap();
           }
         })
         .catch(error => {
@@ -67,6 +74,22 @@ function loadScript(src, callback) {
   };
   document.body.appendChild(script);
 }
+
+function loadScriptModule(src, callback, isModule = false) {
+  const script = document.createElement('script');
+  script.src = src;
+  if (isModule) {
+    script.type = "module"; // تحديد النوع كـ "Module"
+  }
+  script.onload = callback;
+  script.onerror = () => {
+    console.error(`Failed to load script: ${src}`);
+  };
+  document.body.appendChild(script);
+}
+
+
+
 
 /**
  * Function to genrate Charts for Overview Page
@@ -154,15 +177,31 @@ function loadBarChartOverview(){
   });
 }
 
+/********************** */
 
+        function initMap() {
+            // تحديد المركز الرئيسي للخريطة
+            const centerLocation = { lat: 31.7683, lng: 35.2137 }; // القدس
 
+            // إنشاء الخريطة
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: centerLocation,
+            });
 
+            // المواقع التي تريدين عرضها
+            const locations = [
+                { lat: 31.7683, lng: 35.2137, title: "القدس" }, // القدس
+                { lat: 32.0853, lng: 34.7818, title: "تل أبيب" }, // تل أبيب
+                { lat: 32.7940, lng: 35.0938, title: "الناصرة" }, // الناصرة
+            ];
 
-
-
-
-
-
-
-
-
+            // إضافة العلامات (Markers) لكل موقع
+            locations.forEach((location) => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.title, // يظهر النص عند الوقوف على العلامة
+                });
+            });
+        }

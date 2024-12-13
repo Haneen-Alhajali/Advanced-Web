@@ -12,10 +12,27 @@
     <div class="overview">
         <h1>Overview</h1>
     
-        <div class="map">
-            <p>map hare</p>
+        <div id="map" class="map">
+
         </div>
-    
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAywsxQ1DTWXBu1k6GonbudlIYXdQXdOdA&callback=initMap" async defer></script>
+        
+        <script>
+            function initMap() {
+                const location = { lat: 31.7683, lng: 35.2137 }; 
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 8,
+                    center: location,
+                });
+                const marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            }
+        </script>
+
+
+
     
         <div class="stats">
             <div class="stat-item">

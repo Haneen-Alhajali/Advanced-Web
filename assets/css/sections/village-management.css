@@ -1,11 +1,10 @@
 /* General styles */
-
 @import '../colors.css';
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color:var(--background-color-dark);
+    background-color: var(--background-color-dark);
     color: var(--text-color-light);
 }
 
@@ -18,7 +17,7 @@ body {
 /* Main content */
 .content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 1vw;
     background-color: var(--background-color-dark);
 }
 
@@ -26,27 +25,27 @@ body {
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius:.5vw;
+    padding: 2vh 2vw;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .village-list {
     background-color: var(--background-color-light);
-    padding: 20px;
-    border-radius: 5px;
+    padding: 1vh 1vw;
+    border-radius: .5vw;
 }
 
 .village-list h3 {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .search-box {
     width: 98%; 
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    padding: 2vh 1vw;
+    margin-bottom: 1vh;
+    border-radius: .5vw;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
@@ -62,9 +61,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 2vh;
     flex-wrap: wrap; /* Ensures pagination moves below the sort section if needed */
-    margin-bottom: 20px; /* Adds space between sort page container and village items */
+    margin-bottom: 2vh; /* Adds space between sort page container and village items */
 }
 
 .sort {
@@ -73,12 +72,12 @@ body {
 }
 
 .sort select {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1vh .5vw;
+    border-radius: .5vw;
     border: 1px solid rgba(255, 255, 255, 0.3); 
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
-    margin-left: 10px;
+    margin-left: 1vw;
 }
 .sort select:focus {
     outline: none;
@@ -90,104 +89,362 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 20px; /* Adds spacing between sort and pagination */
+    margin-left: 2vw; /* Adds spacing between sort and pagination */
 }
 
 .pagination button {
     background-color: var(--background-color-light4);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border-radius: 0.5vw;
+    padding: .5vh 1vw;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: .5vw;
 }
 
 /* Village Items */
 .village-item {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color-light2);
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 1vh .8vw;
+    border-radius: .5vw;
+    margin-bottom: 2vh;
 }
 
-
 .buttons button {
-    margin-left: 5px;
+    margin-left: .5vw;
     background-color: var(--background-color-light4);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border-radius: .5vw;
+    padding: 1vh 1vw;
     cursor: pointer;
     font-weight: bold;
 }
 
-/* Responsive Styles */
-
-@media (max-width: 768px) {
-    .dashboard {
-        flex-direction: column;
-    }
-
-    .sort-page-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .pagination {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        margin-left: 0;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .village-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .buttons button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .add-new {
-        width: 100%;
-    }
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust position */
+    width: 50%; /* Set a smaller width */
+    max-width: 30%; /* Maximum width */
+    max-height: 90%; /* Maximum height to ensure it fits on the screen */
+    background-color: var(--background-color-light);
+    padding: 1vh 2vw;
+    border-radius: 5px;
+    border: 1px solid var(--background-color-light2); /* Border color */
+}
+.modal {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-@media (max-width: 480px) {
-    .content {
-        padding: 15px;
-    }
+.modal.show {
+    display: block;
+    opacity: 1;
+}
 
-    .add-new {
-        padding: 12px 20px;
-    }
 
-    .pagination button {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
+.modal-content {
+    padding: 1vw;
+    
+}
 
-    .search-box {
-        font-size: 14px;
-    }
+.close-btn {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    font-size: 2vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
 
+.close-btn:hover,
+
+.close-btn:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal-content form button[type="submit"] {
+    background-color: aquamarine;
+    width: 100%; /* توحيد عرض الزر ليكون مساويًا للحقول */
+    padding:1vh 1vw;
+    border-radius: .5vw;
+    border: none;
+    background-color: var(--background-color-light4); /* اللون الرئيسي */
+    color: var(--text-color-light);
+    font-weight: bold;
+    display: block; /* يجعل الزر يأخذ عرض الكتلة */
+    margin: 1.5vh auto; /* توسيط الزر */
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.modal-content form button[type="submit"]:hover {
+    background-color: var(--background-color-light3); /* تغيير لون الزر عند التمرير */
+}
+
+
+
+
+/* Style for Modal */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
+    overflow: auto; /* Enable scroll if content overflows */
+
+}
+
+/* Modal content */
+.modal2 .modal-content {
+    background-color: #2c3e50; /* Dark background */
+    color: #ecf0f1; /* Light text */
+    width: 35vw; /* Fixed width based on image */
+    height: 45vh; /* Fixed height based on image */
+    margin: auto; /* Center horizontally */
+    margin-top: calc(50vh - 175px); /* Center vertically */
+    padding: 2vh 2vw;
+    border-radius: .5vw; /* Rounded corners */
+    border: none; /* No border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+    text-align: left; /* Align text to left */
+    position: relative; /* For positioning close button */
+    place-content: center;
+
+}
+
+
+#view-village-modal .modal-content{
+    margin-top: 15vh;
+    height: 70vh;
+}
+/* Content styling */
+#view-village-modal-content {
+    font-size: 1.5vw;
+    line-height: 1.8vw;
+    margin-top: 1vh;
+}
+
+/* Title styling */
+.modal2 h3 {
+
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ecf0f1;
+    margin-bottom: 2vh;
+}
+
+/* Image and extra buttons */
+#view-village-modal-content img {
+    display: block;
+    margin: 1vw auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: .5vw;
+}
+
+
+
+
+
+
+/*update modal*/
+
+.modalUpdate {
+
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust position */
+    width: 30vw; /* Set a smaller width */
+    max-width: 40vw; /* Maximum width */
+    max-height: 88vh; /* Maximum height to ensure it fits on the screen */
+    background-color: var(--background-color-light);
+    padding: 1vh 1vw;
+    border-radius: .5vw;
+    border: 1px solid var(--background-color-light2); /* Border color */
+
+}
+
+
+
+
+.modal-content label {
+    display: block;
+    margin: 1vh 0;
+    font-size: .9rem; /* Adjust label font size */
+}
+
+
+
+/*for all label and faild */
+.modal-content input,
+.modal-content button,
+.modal-content select {
+    margin-bottom: .5vh;
+    font-size: 1rem; /* Adjust input and button font size */
+    width: 95%;
+    padding:1vh 1vw;
+    border-radius: .5vw;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: var(--background-color-light2);
+    color: var(--text-color-light);
+
+}
+
+
+
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modalUpdateDemographic{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust position */
+    width: 30vw; /* Set a smaller width */
+
+    
+    height: 85vh;
+    width: 40vw;
+    max-width: 40vw; /* Maximum width */
+    
+    background-color: var(--background-color-light);
+    padding: calc(1vh + 1vw);
+    border-radius: .5vw;
+    border: 1px solid var(--background-color-light2); /* Border color */
+    place-content: center;
+}
+
+.modalUpdateDemographic label{
+
+    font-size: .9rem;
+    padding-bottom: 2vh;
+
+}
+
+.modalUpdateDemographic h3{
+    padding-bottom: 4vh;
+    font-size: 1.2rem;
+
+}
+
+.modalUpdateDemographic form button[type="submit"] {
+    margin-top: 3vh;
+}
+
+.village-item  {
+    place-items: left;
+}
+
+@media screen and (max-width: 830px) {
     .village-item {
-        padding: 10px;
+        background-color: var(--background-color-light2);
+        width: 100%; 
+    }
+    
+    .village-item .buttons {
+        display: flex;
+        flex-direction: column; 
+        gap: .2rem;
+        width: 50%; 
+    }
+    
+ 
+    .village-item .buttons button {
+
+        width: 100%; 
+        font-size: .7rem; 
+        cursor: pointer; 
+        border-radius: .5vw; 
+        text-align: center; 
+    }
+ 
+
+    #view-village-modal .modal-content{
+        margin-top: 20vh;
+        height: 60vh;
+        width: 70vw;
     }
 
-    .buttons button {
-        font-size: 14px;
-        padding: 8px;
+
+   #modal-content-view h3{
+        font-size:2rem;
     }
+    #view-village-modal-content {
+        font-size: 1.5rem;
+        line-height: 1.8vw;
+        margin-top: .5rem;
+    }
+
+    #view-village-modal-content p{
+        line-height: 2rem;
+    }
+    
+    #update-village-modal{
+        width: 80vw;
+        max-width: 80vw; 
+        max-height: 88vh; 
+   }
+
+    #update_Demographic-village-modal{
+        width: 80vw;
+        max-width: 80vw; 
+        max-height: 70vh;   
+    }
+
+    #add-village-modal{
+        width: 80vw;
+        height: 75vh;
+        max-width: 80vw; 
+        max-height: 88vh; 
+    }
+
+    
+.add-new {
+    background-color: var(--background-color-light2);
+    color: var(--text-color-light);
+    border: none;
+    border-radius:.2rem;
+    padding: 1vh 1vw;
+    cursor: pointer;
+    margin-bottom: 1vh;
+    font-size: 1rem;
+}
 }

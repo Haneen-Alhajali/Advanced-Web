@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Village Management</title>
-    <link rel="stylesheet" href="../assets/css/sections/village-management.css">
-</head>
-<body>
-    <!-- Main Content Area -->
-    <main class="content">
-        <button class="add-new">Add New Village</button>
-        <div class="village-list">
+   <!-- Main Content Area -->
+    <div class="village-management">
+        <button class="add-new" onclick="showAddModel()">Add New Village</button>
+        <div class="village-list" >
             <h3>View Village List</h3>
             <input type="text" class="search-box" placeholder="Search villages...">
             <div class="sort-page-container">
@@ -29,43 +20,20 @@
                 </div>
             </div>
             
-            <div class="village-item">
-                <span>Jabalia - Gaza Strip</span>
-                <div class="buttons">
-                    <button class="view">View</button>
-                    <button class="update">Update Village</button>
-                    <button class="delete">Delete Village</button>
-                    <button class="update-data">Update Demographic Data</button>
-                </div>
+
+            <div class="village-item-container" onload="readAll()">
+             <!--here show the village items list-->
             </div>
-            <div class="village-item">
-                <span>Beit Lahia - Gaza Strip</span>
-                <div class="buttons">
-                    <button class="view">View</button>
-                    <button class="update">Update Village</button>
-                    <button class="delete">Delete Village</button>
-                    <button class="update-data">Update Demographic Data</button>
-                </div>
-            </div>
-            <div class="village-item">
-                <span>Quds - West Bank</span>
-                <div class="buttons">
-                    <button class="view">View</button>
-                    <button class="update">Update Village</button>
-                    <button class="delete">Delete Village</button>
-                    <button class="update-data">Update Demographic Data</button>
-                </div>
-            </div>
-            <div class="village-item">
-                <span>Shejaiya - Gaza Strip</span>
-                <div class="buttons">
-                    <button class="view">View</button>
-                    <button class="update">Update Village</button>
-                    <button class="delete">Delete Village</button>
-                    <button class="update-data">Update Demographic Data</button>
-                </div>
-            </div>
-            <div class="village-item">
+           
+
+
+            
+         
+          
+            
+          <!--
+            
+           <div class="village-item">
                 <span>Hebron - West Bank</span>
                 <div class="buttons">
                     <button class="view">View</button>
@@ -74,30 +42,120 @@
                     <button class="update-data">Update Demographic Data</button>
                 </div>
             </div>
+          
+          --> 
+
+
+
         </div>
     </main>
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const searchBox = document.querySelector(".search-box");
-    const villageItems = document.querySelectorAll(".village-item");
-    
-    searchBox.addEventListener("input", () => {
-        const searchText = searchBox.value.toLowerCase().trim();
-        console.log("Search Text:", searchText);
-        
-        villageItems.forEach(item => {
-            const villageName = item.querySelector("span").textContent.toLowerCase().trim();
-            console.log("Village Name:", villageName);
-            
-            if (villageName.includes(searchText)) {
-                item.style.display = "flex";
-            } else {
-                item.style.display = "none";
-            }
-        });
-    });
-});
-</script>
 
-</body>
-</html>
+    <!-- Modal for Adding New Village -->
+    <div id="add-village-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAddModal()">&times;</span>
+            <h3>Add New Village</h3>
+            <form action="">
+                <label for="village-name">Village Name:</label>
+                <input type="text" id="village-name" name="village-name" required><br>
+            
+                <label for="region-district">Region/District:</label>
+                <input type="text" id="region-district" name="region-district" required><br>
+            
+                <label for="Land Area (sq Km)">Land Area (sq Km):</label>
+                <input type="number" id="Land Area (sq Km)" name="Land Area (sq Km)" required><br>
+            
+                <label for="Latitude">Latitude:</label>
+                <input type="number" id="Latitude" name="Latitude" required><br>
+            
+                <label for="Longitude">Longitude:</label>
+                <input type="number" id="Longitude" name="Longitude" required><br>
+            
+                <label for="village-file">Upload Image:</label>
+                <input type="file" id="village-file" name="village-file"><br>
+            
+                <label for="Categories/Tags">Categories/Tags:</label>
+                <input type="text" id="Categories/Tags" name="Categories/Tags" placeholder="e.g., rural, urban" ><br>
+            
+                <button type="submit" onclick="saveAddedDataToLocal(event)">Add Village</button>
+
+                
+            </form>
+        </div>
+    </div>
+
+<!-- shahd adding-->
+
+<!-- Modal for Update Village -->
+<div id="update-village-modal" class="modalUpdate">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeUpdateModal()">&times;</span>
+        <h3>Update Village</h3>
+        <form id="update-village-form">
+            <input type="text" hidden class="id-of-update-village-form">
+            <label for="update-village-name">Village Name:</label>
+            <input type="text" class="update-village-name" name="village-name" required><br>
+        
+            <label for="update-region-district">Region/District:</label>
+            <input type="text" class="update-region-district" name="region-district" required><br>
+        
+            <label for="update-land-area">Land Area (sq Km):</label>
+            <input type="number" class="update-land-area" name="land-area" required><br>
+        
+            <label for="update-latitude">Latitude:</label>
+            <input type="number" class="update-latitude" name="latitude" required><br>
+        
+            <label for="update-longitude">Longitude:</label>
+            <input type="number" class="update-longitude" name="longitude" required><br>
+        
+            <label for="update-image">Upload Image:</label>
+            <input type="file" class="update-image" name="image"><br>
+        
+            <button type="submit" class="update-village-button-submit" onclick="updateProcess(event)">Update Village</button>
+        </form>
+    </div>
+</div>
+
+<!-- shahd adding-->
+
+
+<!--Adding demographic shahd -->
+<div id="update_Demographic-village-modal" class="modalUpdateDemographic">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeDemographic()">&times;</span>
+        <h3>Add Demographic Data</h3>
+        <form id="update-Demographic-form">
+
+            <input type="text" hidden class="id-of-update-Population-village-form">
+            <label for="Population-Size">Population Size:</label>
+            <input type="text" class="update-village-Population" name="village-Population" required><br>
+        
+            <label for="update-Age">Age Distribution:</label>
+            <input type="text" class="update-Age" name="update-Age" placeholder="e.g., 0-14: 30%, 15-64: 60%, 65+: 10%" required><br>
+        
+            <label for="update-Gender">Gender Ratios:</label>
+            <input type="text" class="update-Gender" name="update-Gender" placeholder="e.g., Male: 51%, Female: 49%" required><br>
+        
+            <label for="update-Population">Population Growth Rate:</label>
+            <input type="text" class="update-Growth-Population" name="update-Population" required><br>
+        
+            <button type="submit" onclick="demographicUpdate(event)">Add Demographic Data</button>
+        </form>
+    </div>
+</div>
+<!--Adding demographic shahd -->
+
+
+
+    <!-- Modal for viewing village details -->
+    <div id="view-village-modal" class="modal2">
+        <div class="modal-content" id="modal-content-view">
+            <span class="close-btn" onclick="closeViewModal()">&times;</span>
+            <h3>Village Details</h3>
+            <div id="view-village-modal-content">
+                <!-- Village Details -->
+            </div>
+        </div>
+    </div>
+</div>
+   

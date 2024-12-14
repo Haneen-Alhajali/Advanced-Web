@@ -1,6 +1,6 @@
    <!-- Main Content Area -->
     <div class="village-management">
-        <button class="add-new" onclick="showAddModel()">Add New Village</button>
+        <button class="add-new" >Add New Village</button>
         <div class="village-list" >
             <h3>View Village List</h3>
             <input type="text" class="search-box" placeholder="Search villages...">
@@ -24,36 +24,13 @@
             <div class="village-item-container" onload="readAll()">
              <!--here show the village items list-->
             </div>
-           
-
-
-            
-         
-          
-            
-          <!--
-            
-           <div class="village-item">
-                <span>Hebron - West Bank</span>
-                <div class="buttons">
-                    <button class="view">View</button>
-                    <button class="update">Update Village</button>
-                    <button class="delete">Delete Village</button>
-                    <button class="update-data">Update Demographic Data</button>
-                </div>
-            </div>
-          
-          --> 
-
-
-
         </div>
     </main>
 
     <!-- Modal for Adding New Village -->
     <div id="add-village-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeAddModal()">&times;</span>
+            <span class="close-btn" id="close-btnAddingNew" onclick="closeAddModal()">&times;</span>
             <h3>Add New Village</h3>
             <form action="">
                 <label for="village-name">Village Name:</label>
@@ -77,7 +54,7 @@
                 <label for="Categories/Tags">Categories/Tags:</label>
                 <input type="text" id="Categories/Tags" name="Categories/Tags" placeholder="e.g., rural, urban" ><br>
             
-                <button type="submit" onclick="saveAddedDataToLocal(event)">Add Village</button>
+                <button type="submit" id="buttonsubmitForAdd" onclick="saveAddedDataToLocal(event)">Add Village</button>
 
                 
             </form>
@@ -150,7 +127,7 @@
     <!-- Modal for viewing village details -->
     <div id="view-village-modal" class="modal2">
         <div class="modal-content" id="modal-content-view">
-            <span class="close-btn" onclick="closeViewModal()">&times;</span>
+            <span class="close-btn" id="close-btnview-village-modal" onclick="closeViewModal()">&times;</span>
             <h3>Village Details</h3>
             <div id="view-village-modal-content">
                 <!-- Village Details -->

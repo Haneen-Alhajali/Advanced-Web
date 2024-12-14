@@ -106,6 +106,12 @@ function sortByAlpha() {
 
 //add new village 
 function showAddModel(){
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+  }
     document.getElementById("add-village-modal").classList.add('show');
     document.getElementById("add-village-modal").style.display="block";
 }
@@ -115,6 +121,12 @@ function closeAddModal(){
 /////////////////////////////
 //update Demographic Data 
 function viewDemographicUpdate(id){
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+  }
     document.getElementById("update_Demographic-village-modal").classList.add('show');
     document.getElementById("update_Demographic-village-modal").style.display="block";
 
@@ -138,6 +150,13 @@ function closeDemographic(){
 
 //update All Data
 function updateModal(id){
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+  }
+
     document.getElementById("update-village-modal").classList.add('show');
     document.getElementById("update-village-modal").style.display="block";
 
@@ -191,10 +210,6 @@ function saveAddedDataToLocal(event) {
 }
 
 function viewingProcess() {
-
-    for(var i=0;i<dataVillage.length;i++)
-        {   console.log("the data stored in ",i, dataVillage[i]);
-        }
 
     let object = localStorage.getItem("object");
     let villages = JSON.parse(object);
@@ -272,6 +287,12 @@ function updateProcess(event) {
 
 function demographicUpdate(event) {
     event.preventDefault();
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!currentUser || currentUser.role !== "admin") {
+        alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+        return;
+    }
 
     const id = parseInt(document.querySelector('.id-of-update-Population-village-form').value);
 
@@ -309,6 +330,13 @@ function demographicUpdate(event) {
 
 
 function deleteVillage(id) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+  }
+  
     const index = dataVillage.findIndex(record => record.id === id);
         if (index !== -1) {
         dataVillage.splice(index, 1);

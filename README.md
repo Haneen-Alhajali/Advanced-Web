@@ -1,70 +1,143 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
+<div align="center">
+     <br>
+</div>
+<div align="center">
+  <br>
+<h1>Village Management System</h1> &nbsp;     
+</div>
+<div align="center">
+<img src="/src/assets/images/VMS1.png" alt="logo image" style="height: 200px; width: 100%; object-fit: contain;">
+</div>
+<br>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a name="intro"></a>
+## 🌟 About the Project
+<strong>Village Management System</strong> is designed to manage and display information about various villages, including their demographics, geographical data, and administrative details. The goal is to provide a comprehensive platform to streamline village management and facilitate decision-making processes. 
 
-## Available Scripts
+### Phases Overview:
+- **Phase 1**: Frontend Development (Completed) – LocalStorage for managing village data.
+- **Phase 2**: Backend Development (Planned) – Integration with Node.js for server-side functionality and future database handling (MongoDB or MySQL).
+- **Phase 3**: Advanced Features and Data Visualization – Enhanced user interface, interactive elements, and detailed reporting features.
 
-In the project directory, you can run:
+<br>
+<br>
 
-### `npm start`
+<details>
+  <summary><h2>💳 Table of Contents<h2\></summary>
+  <ol>
+    <li><a href="#intro">Introduction (What's Village Management System?)</a></li>
+    <li><a href="#bw">Built With</a></li>
+    <li><a href="#gs">Getting Started</a></li>
+    <li><a href="#coref">Main Features</a></li>
+    <li><a href="#roles">Roles</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+ <br>
+ <br>
+ <br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a name="bw"></a>
+## 🔨 Built With
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js (Phase 2 – Planned for server-side functionality)
+- **Database**: LocalStorage (Phase 1), with plans to integrate MongoDB or MySQL in future phases (Phase 2/3)
+- **Libraries/Frameworks**: Bootstrap for styling and responsiveness
+- **Others**: Node.js for backend development (Phase 2), MongoDB or MySQL for database management (Phase 3)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
+<br>
 
-### `npm test`
+<a name="gs"></a>
+## 🚀 Getting Started
+### ⚙️ Running the project
+#### To get started with the project:
+##### 1. Clone the repository:
+> [![Github][Github]][wewe]
+>
+> sh
+> git clone https://github.com/Haneen-Radad/Advanced-Web.git
+> 
+##### 2. Navigate to the project directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> sh
+>cd Advanced-Web
+> 
+##### 3. Open the project in your browser
+   - Locate and open the `index.html` file directly in a browser to view the system.
+> 
+##### 4. Run locally (optional)
+   - Use a local server such as Live Server in VS Code for best results.
 
-### `npm run build`
+<br>
+<br>
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ <a name="coref"></a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 2. Main Features
+### 🛠️ Village Data Management
+- Comprehensive CRUD operations for managing village data, including demographics, geographical information, and resources.
+- Interactive gallery for showcasing village facilities and landmarks.
+  <br>
+  
+### 📊 User Roles and Permissions
+- Role-based access control:
+  - **Admins**: Full access to add, edit, and delete data.
+  - **Users**: View-only access to data.
+    <br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ⭐ User Experience
+- Clean, responsive design optimized for ease of use on multiple devices.
+- Personalized recommendations based on village data.
+  
+### ⚙️ Backend Integration (Phase 2)
+- **Server-side support**: Node.js will be integrated to manage village data through API endpoints.
+- **Database Integration**: A future phase will include MongoDB or MySQL integration to ensure reliable and scalable data storage.
+  <br>
+  
+### 🌱 Phase 3: Advanced Features & Data Visualization
+- Enhanced data visualization and reporting tools.
+- Interactive maps and charts for better decision-making.
+- Detailed village statistics and analytics for administrators.
+  <br>
 
-### `npm run eject`
+### 🛡️ Security Features (Planned for Phase 3)
+- Authentication and authorization protocols for secure access to sensitive data.
+- Improved data validation and error handling in the backend system.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ <br>
+ <br>
+ <br>
+ <br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ <a name="roles"></a>
+## 👥 Roles
+### 👤 User
+- View village data, demographics, and facilities.
+- Cannot add, edit, or delete any information.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 👥 Admin
+- Full control over the platform, including managing village data, user roles, and permissions.
+- Ability to add images to the gallery and oversee data updates.
+  <br>
+ <br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<a name="contact"></a>
+## 📱 Contact
+* Haneed Alhaj - haneenradad2013@gmail.com
+* Shahd Yaseen - shadthabit@gmail.com
+<br>
+  <p align="center"><a href="https://github.com/Haneen-Radad/Advanced-Web/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Haneen-Radad/Advanced-Web" />
+</a> </p>
+ <p align="right">(<a href="#readme-top">⬆️</a>)</p>
+ <br>
+<br>
+<br>
+<br>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[wewe]: https://github.com/Haneen-Radad/Advanced-Web.git
+[Github]: https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white

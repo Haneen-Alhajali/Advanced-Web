@@ -124,20 +124,6 @@ function loadScript(src, callback) {
   document.body.appendChild(script);
 }
 
-function loadScriptModule(src, callback, isModule = false) {
-  const script = document.createElement('script');
-  script.src = src;
-  if (isModule) {
-    script.type = "module"; // تحديد النوع كـ "Module"
-  }
-  script.onload = callback;
-  script.onerror = () => {
-    console.error(`Failed to load script: ${src}`);
-  };
-  document.body.appendChild(script);
-}
-
-
 
 
 /**

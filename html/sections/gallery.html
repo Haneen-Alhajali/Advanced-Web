@@ -1,36 +1,36 @@
 <div class="gallery">
-  <button class="add-image-btn">Add New Image</button>
+  <button class="gallery-add-image-btn">Add New Image</button>
   <div class="gallery-grid" id="galleryGrid">
     <!-- Gallery items will be dynamically rendered here -->
   </div>
 </div>
 
 <!-- Add Image Modal -->
-<div id="addImageModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
+<div id="gallery-addImageModal" class="gallery-modal">
+  <div class="gallery-modal-content">
+    <span class="gallery-close-btn">&times;</span>
     <h2>Add New Image</h2>
-    <form id="addImageForm">
-      <label for="imageOption">Choose Image Source:</label>
-      <select id="imageOption" name="imageOption">
+    <form id="gallery-addImageForm">
+      <label for="gallery-imageOption">Choose Image Source:</label>
+      <select id="gallery-imageOption" name="gallery-imageOption">
         <option value="url">Image URL</option>
         <option value="upload">Upload File</option>
       </select>
 
-      <div id="urlInput">
-        <label for="imageUrl">Image URL:</label>
-        <input type="url" id="imageUrl" name="imageUrl" placeholder="Enter image URL" required>
+      <div id="gallery-urlInput">
+        <label for="gallery-imageUrl">Image URL:</label>
+        <input type="url" id="gallery-imageUrl" name="gallery-imageUrl" placeholder="Enter image URL" required>
       </div>
 
-      <div id="uploadInput" style="display: none;">
-        <label for="imageFile">Upload Image:</label>
-        <input type="file" id="imageFile" name="imageFile" accept="image/*">
+      <div id="gallery-uploadInput" style="display: none;">
+        <label for="gallery-imageFile">Upload Image:</label>
+        <input type="file" id="gallery-imageFile" name="gallery-imageFile" accept="image/*">
       </div>
 
       <label for="description">Description:</label>
-      <textarea id="description" name="description" placeholder="Enter image description" required></textarea>
+      <textarea id="gallery-description" name="gallery-description" placeholder="Enter image description" required></textarea>
 
-      <button type="submit" class="submit-btn">Add Image</button>
+      <button type="submit" class="gallery-submit-btn">Add Image</button>
     </form>
   </div>
 </div>

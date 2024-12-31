@@ -21,15 +21,15 @@ window.renderGallery = renderGallery;
 renderGallery();
 
 // Add new image functionality
-const addImageBtn = document.querySelector(".add-image-btn");
-const addImageModal = document.getElementById("addImageModal");
-const closeBtn = document.querySelector(".close-btn");
-const addImageForm = document.getElementById("addImageForm");
-const imageOption = document.getElementById("imageOption");
-const urlInput = document.getElementById("urlInput");
-const uploadInput = document.getElementById("uploadInput");
-const imageUrl = document.getElementById("imageUrl");
-const imageFile = document.getElementById("imageFile");
+const addImageBtn = document.querySelector(".gallery-add-image-btn");
+const addImageModal = document.getElementById("gallery-addImageModal");
+const closeBtn = document.querySelector(".gallery-close-btn");
+const addImageForm = document.getElementById("gallery-addImageForm");
+const imageOption = document.getElementById("gallery-imageOption");
+const urlInput = document.getElementById("gallery-urlInput");
+const uploadInput = document.getElementById("gallery-uploadInput");
+const imageUrl = document.getElementById("gallery-imageUrl");
+const imageFile = document.getElementById("gallery-imageFile");
 
 addImageBtn.addEventListener("click", () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -66,7 +66,7 @@ addImageForm.addEventListener("submit", (event) => {
 
   let imageUrlValue = "";
   let imageFileValue = null;
-  const description = document.getElementById("description").value;
+  const description = document.getElementById("gallery-description").value;
 
   // If image URL is selected
   if (imageOption.value === "url") {

@@ -8,7 +8,7 @@
 }
 
 /* Button styling */
-.add-image-btn {
+.gallery-add-image-btn {
   background-color: var(--background-color-light3);
   color: #fff;
   padding: 12px 20px;
@@ -18,7 +18,7 @@
   transition: background-color 0.3s ease;
 }
 
-.add-image-btn:hover {
+.gallery-add-image-btn:hover {
   background-color: var(--background-color-light2);
 }
 
@@ -81,7 +81,7 @@
 }
 
 /* Modal Styles */
-.modal {
+.gallery-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed position */
   z-index: 1000; /* Sit on top */
@@ -93,7 +93,7 @@
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
 }
 
-.modal-content {
+.gallery-modal-content {
   background-color:var(--background-color-light2);
   margin: auto; /* Center the modal horizontally */
   padding: 20px;
@@ -105,10 +105,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#imageOption{
+#gallery-imageOption{
   margin-bottom: 10px;
 }
-.close-btn {
+.gallery-close-btn {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -116,24 +116,24 @@
   cursor: pointer;
 }
 
-.close-btn:hover,
-.close-btn:focus {
+.gallery-close-btn:hover,
+.gallery-close-btn:focus {
   color: black;
   text-decoration: none;
 }
 
 /* Form Styles */
-#addImageForm {
+#gallery-addImageForm {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
 }
 
-label {
+.gallery-modal label {
   font-size: 14px;
   margin: 10px 0 5px; /* Add spacing above the input */
 }
 
-input, textarea {
+.gallery-modal input, textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px; /* Add spacing between inputs */
@@ -142,12 +142,12 @@ input, textarea {
   box-sizing: border-box; /* Prevents input overflow */
 }
 
-textarea {
+.gallery-modal textarea {
   resize: vertical; /* Allow vertical resizing only */
   min-height: 100px; /* Ensure consistent height */
 }
 
-button.submit-btn {
+button.gallery-submit-btn {
   background-color: var(--background-color-light4);
   color: white;
   border: none;
@@ -157,7 +157,7 @@ button.submit-btn {
   transition: background-color 0.3s ease;
 }
 
-button.submit-btn:hover {
+button.gallery-submit-btn:hover {
   background-color: var(--background-color-light3);
 }
 
@@ -181,12 +181,12 @@ button.submit-btn:hover {
     max-height: 100px;
   }
 
-  .add-image-btn {
+  .gallery-add-image-btn {
     font-size: 12px;
     padding: 8px 14px;
   }
 
-  .modal-content {
+  .gallery-modal-content {
     width: 90%; /* Full width on smaller screens */
   }
 }
@@ -196,7 +196,7 @@ button.submit-btn:hover {
     max-height: 80px;
   }
 
-  .add-image-btn {
+  .gallery-add-image-btn {
     font-size: 10px;
     padding: 6px 12px;
   }

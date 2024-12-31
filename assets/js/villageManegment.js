@@ -1,23 +1,10 @@
-//import { dataVillage } from './data/dataVillage.js';
-//console.log("Initial gallery from localStorage:", dataVillage);
-
-let dataVillage= [
-    {  id:1, name:"Jabalia", Region:"- Gaza Strip", land:10 , Latitude:31.6 , Longitude:65.2245 ,Tags:"undifined" , img:""  , population:"4", age:"50", gender:10 , growthRate:31.6  } ,
-    {  id:2, name:"Beit Lahia", Region:"- Gaza Strip", land:15 , Latitude:51.33 , Longitude:35.2245 ,Tags:"undifined" , img:""  ,population:"3", age:"4", gender:20 , growthRate:38  } ,
-    {  id:3, name:"Quds", Region:"- West Bank", land:17 , Latitude:78.33 , Longitude:57.2245 ,Tags:"undifined" , img:"" , population:"6", age:"58", gender:50 , growthRate:64.01  } ,
-    {  id:4, name:"Shejaiya", Region:"- Gaza Strip", land:33 , Latitude:65.33 , Longitude:35.2245 ,Tags:"undifined" , img:"" ,  population:"11", age:"78", gender:90 , growthRate:8.3   } 
-
-];
-
+import { dataVillage } from './data/dataVillage.js';
+console.log("Initial dataVillage from localStorage:", dataVillage);
 
 
 
  function readAll()
 {
-    for(var i=0;i<dataVillage.length;i++)
-    {   console.log("the data stored in ",i, dataVillage[i]);
-    }
-
 
      localStorage.setItem("object",JSON.stringify(dataVillage));
      var dataShow =document.querySelector(".village-item-container");
@@ -25,13 +12,10 @@ let dataVillage= [
      var object = localStorage.getItem('object');
      var objectData =JSON.parse(object);
      var element ="";
-     console.log("Object Data:", objectData);
      
      objectData.map(record =>{
         //here problem in vieo after update
         //record known
-        console.log("Data in localStorage:", JSON.parse(localStorage.getItem("object")));
-        console.log("Record:", record);
 
         element +=`
      <div class="village-item">
@@ -49,7 +33,6 @@ let dataVillage= [
         `
 });
 
-             console.log("the element "+element);
 
      dataShow.innerHTML=element; 
 }
@@ -202,6 +185,8 @@ function saveAddedDataToLocal(event) {
   
     readAll();
     localStorage.setItem("object", JSON.stringify(dataVillage));
+    console.log("Initial dataVillage from localStorage:", dataVillage);
+
     readAll();
     closeAddModal();
     searchBox(); 
@@ -223,7 +208,6 @@ function viewingProcess() {
 
             var village = villages[index];
 
-            console.log("the village in vieo",village);
             if (village) {
                 //here problem in vieo after update
                 viewModalContent.innerHTML = `
@@ -352,12 +336,33 @@ function deleteVillage(id) {
 }
 
 
-
-
-
-
-
 readAll();
 searchBox();
 sortByAlpha();
 viewingProcess();
+
+    // Expose  to the global scope
+    window.closeViewModal = closeViewModal;
+    window.viewModal = viewModal;
+    window.updateModal = updateModal;
+    window.deleteVillage = deleteVillage;
+    window.viewDemographicUpdate = viewDemographicUpdate;
+    window.updateProcess = updateProcess;
+    window.closeUpdateModal = closeUpdateModal;
+    window.closeDemographic = closeDemographic;
+    window.showAddModel = showAddModel;
+    window.closeAddModal = closeAddModal;
+    window.saveAddedDataToLocal = saveAddedDataToLocal;
+
+
+
+
+
+    
+
+
+
+
+
+
+

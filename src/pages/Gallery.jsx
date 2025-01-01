@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../assets/css/sections/gallery.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "../assets/css/sections/gallery.module.css";
 
 const Gallery = () => {
   const [galleryData, setGalleryData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [imageOption, setImageOption] = useState('url');
-  const [imageUrl, setImageUrl] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageSource, setImageSource] = useState("url");
+  const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
-  // Load gallery data from localStorage when the component mounts
   useEffect(() => {
-    const savedGalleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-    setGalleryData(savedGalleryData);
+    // Load gallery data from localStorage
+    const storedGalleryData = JSON.parse(localStorage.getItem("galleryData")) || [];
+    setGalleryData(storedGalleryData);
+
+    // Load current user data from localStorage
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    setCurrentUser(user);
   }, []);
 
-  // Render gallery items
   const renderGallery = () => {
     return galleryData.map((item) => (
       <div key={item.id} className={styles.galleryItem}>
@@ -25,92 +29,105 @@ const Gallery = () => {
     ));
   };
 
-  // Handle image addition
-  const addImage = () => {
-    if (!imageUrl && !imageFile) {
-      alert('Please provide an image URL or upload a file.');
+  const handleAddImage = () => {
+    if (!currentUser || currentUser.role !== "admin") {
+      alert("You are not authorized to perform this action. Only administrators can perform this operation.");
+      return;
+    }
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setImageUrl("");
+    setImageFile(null);
+    setDescription("");
+  };
+
+  const handleImageOptionChange = (e) => {
+    setImageSource(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (imageSource === "url" && !imageUrl) {
+      alert("Please provide an image URL.");
       return;
     }
 
-    const newImage = {
-      id: galleryData.length + 1,
-      imageUrl: imageUrl,
-      description: description,
-    };
+    if (imageSource === "upload" && !imageFile) {
+      alert("Please upload an image file.");
+      return;
+    }
 
-    // If file is uploaded, convert to base64 and update the image URL
-    if (imageFile) {
+    if (imageSource === "upload") {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const base64Image = reader.result;
-        const newImageWithFile = { ...newImage, imageUrl: base64Image };
-        updateGalleryData(newImageWithFile);
+        saveImageData(reader.result, description);
       };
       reader.readAsDataURL(imageFile);
     } else {
-      updateGalleryData(newImage);
+      saveImageData(imageUrl, description);
     }
   };
 
-  // Update gallery data and localStorage
-  const updateGalleryData = (newImage) => {
-    const updatedGalleryData = [...galleryData, newImage];
-    setGalleryData(updatedGalleryData);
-    localStorage.setItem('galleryData', JSON.stringify(updatedGalleryData));
-    setShowModal(false);
-    resetForm();
-  };
+  const saveImageData = (imageSrc, description) => {
+    const newImage = {
+      id: galleryData.length + 1,
+      imageUrl: imageSrc,
+      description,
+    };
 
-  // Reset the form
-  const resetForm = () => {
-    setImageUrl('');
-    setImageFile(null);
-    setDescription('');
+    const updatedGallery = [...galleryData, newImage];
+    setGalleryData(updatedGallery);
+    localStorage.setItem("galleryData", JSON.stringify(updatedGallery));
+    handleModalClose();
   };
 
   return (
-    <div className={styles.galleryContainer}>
-      <button onClick={() => setShowModal(true)} className={styles.galleryAddImageBtn}>
-        Add New Image
-      </button>
-      <div className={styles.galleryGrid}>
-        {renderGallery()}
-      </div>
+    <div className={styles.gallery}>
+      {currentUser && currentUser.role === "admin" ? (
+        <button className={styles.galleryAddImageBtn} onClick={handleAddImage}>
+          Add New Image
+        </button>
+      ) : (
+        <p className={styles.galleryAuthMessage}>
+          Only administrators can add new images.
+        </p>
+      )}
+      <div className={styles.galleryGrid}>{renderGallery()}</div>
 
-      {showModal && (
+      {isModalOpen && (
         <div className={styles.galleryModal}>
-          <div className={styles.modalContent}>
-            <span
-              className={styles.closeBtn}
-              onClick={() => setShowModal(false)}
-            >
+          <div className={styles.galleryModalContent}>
+            <span className={styles.galleryCloseBtn} onClick={handleModalClose}>
               &times;
             </span>
             <h2>Add New Image</h2>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                addImage();
-              }}
-            >
-              <label htmlFor="gallery-imageOption">Choose Image Source:</label>
+            <form id="galleryAddImageForm" onSubmit={handleFormSubmit}>
+              <label htmlFor="galleryImageOption">Choose Image Source:</label>
               <select
-                id="gallery-imageOption"
-                value={imageOption}
-                onChange={(e) => setImageOption(e.target.value)}
+                id="galleryImageOption"
+                className={styles.galleryImageOption}
+                value={imageSource}
+                onChange={handleImageOptionChange}
               >
                 <option value="url">Image URL</option>
                 <option value="upload">Upload File</option>
               </select>
 
-              {/* URL Input */}
-              {imageOption === 'url' && (
+              {imageSource === "url" && (
                 <div>
-                  <label htmlFor="gallery-imageUrl">Image URL:</label>
+                  <label htmlFor="imageUrl">Image URL:</label>
                   <input
                     type="url"
-                    id="gallery-imageUrl"
+                    id="imageUrl"
+                    className={styles.gallerymodalInput}
                     value={imageUrl}
+                    style={{
+                      backgroundColor: "white",
+                    }}
                     onChange={(e) => setImageUrl(e.target.value)}
                     placeholder="Enter image URL"
                     required
@@ -118,29 +135,33 @@ const Gallery = () => {
                 </div>
               )}
 
-              {/* Upload File Input */}
-              {imageOption === 'upload' && (
+              {imageSource === "upload" && (
                 <div>
-                  <label htmlFor="gallery-imageFile">Upload Image:</label>
+                  <label htmlFor="imageFile">Upload Image:</label>
                   <input
                     type="file"
-                    id="gallery-imageFile"
-                    onChange={(e) => setImageFile(e.target.files[0])}
+                    id="imageFile"
+                    className={styles.gallerymodalInput}
                     accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      setImageFile(file);
+                    }}
+                    required
                   />
                 </div>
               )}
 
-              <label htmlFor="gallery-description">Description:</label>
+              <label htmlFor="description">Description:</label>
               <textarea
-                id="gallery-description"
+                id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter image description"
                 required
               ></textarea>
 
-              <button type="submit" className={styles.submitBtn}>
+              <button type="submit" className={styles.gallerySubmitBtn}>
                 Add Image
               </button>
             </form>

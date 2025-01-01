@@ -24,6 +24,31 @@
   background-color: var(--background-color-light2);
 }
 
+/* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures the modal appears above all content */
+}
+
+/* Modal Content */
+.modalContent {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
 /* Gallery grid styling */
 .galleryGrid {
   display: grid;
@@ -85,7 +110,6 @@
 
 /* Modal Styles */
 .galleryModal {
-  display: none; /* Hidden by default */
   position: fixed; /* Fixed position */
   z-index: 1000; /* Sit on top */
   left: 0;
@@ -108,8 +132,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#galleryImageOption {
+.galleryImageOption {
   margin-bottom: 10px;
+  width: 300px;
 }
 
 .galleryCloseBtn {
@@ -137,13 +162,17 @@
   margin: 10px 0 5px; /* Add spacing above the input */
 }
 
-.galleryModal input, .galleryModal textarea {
+.gallerymodalInput , .galleryModal textarea {
   width: 100%;
+  font-size: 14px;
   padding: 10px;
   margin-bottom: 15px; /* Add spacing between inputs */
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box; /* Prevents input overflow */
+}
+.gallerymodalInput{
+  background-color: var(--background-color-light2);
 }
 
 .galleryModal textarea {

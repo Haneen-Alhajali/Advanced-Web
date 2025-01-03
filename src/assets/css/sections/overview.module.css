@@ -12,7 +12,11 @@
 
 }
 
+<<<<<<< HEAD
 .stat-item {
+=======
+.statItem {
+>>>>>>> 7a432b0 (add village manegement and overview)
     flex: 1;
     background-color: var(--background-color-light);
     padding: 1vw;
@@ -37,7 +41,9 @@
     padding-top: 1vw;
 }
 
-.chart-container {
+
+
+.chartContainer {
     background-color:var(--background-color-light);
     border-radius: .5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -68,7 +74,8 @@ canvas {
 
 }
 
-.barChart_container{
+
+.barChartContainer{
 background:#374151;
 
 border-radius: 0.5vw;
@@ -91,7 +98,8 @@ place-content: center;
     gap: 1rem; 
 }
 
-.stat-item {
+
+.statItem {
     padding: 0;
     font-size: 2vh;
     font-weight: bold;
@@ -108,22 +116,25 @@ place-content: center;
     padding-top: 1vh;
 }
 
-.chart-container{
+
+.chartContainer{
     width: 100%;
     height: 70%;
     margin-bottom: 1rem;
 }
 
 
-.chart-container h3{
-font-size: 2rem;
+
+.chartContainer h3{
+  font-size: 2rem;
 }
 
 #ageChart  , #genderChart{
     margin-bottom: 2rem;
 }
 
-.barChart_container{
+
+.barChartContainer{
     width: 100%;
     height: 50vh;
     margin-bottom: 1rem;

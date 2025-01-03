@@ -49,6 +49,7 @@
   position: relative;
 }
 
+
 /* Gallery grid styling */
 .galleryGrid {
   display: grid;
@@ -135,6 +136,7 @@
 .galleryImageOption {
   margin-bottom: 10px;
   width: 300px;
+
 }
 
 .galleryCloseBtn {
@@ -162,15 +164,19 @@
   margin: 10px 0 5px; /* Add spacing above the input */
 }
 
+
 .gallerymodalInput , .galleryModal textarea {
   width: 100%;
   font-size: 14px;
+
   padding: 10px;
   margin-bottom: 15px; /* Add spacing between inputs */
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box; /* Prevents input overflow */
 }
+
+
 .gallerymodalInput{
   background-color: var(--background-color-light2);
 }

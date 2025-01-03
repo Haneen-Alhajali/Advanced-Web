@@ -1,7 +1,7 @@
 /* General styles */
 @import '../colors.css';
 
-.add-new {
+.addnew {
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
     border: none;
@@ -9,9 +9,12 @@
     padding: 2vh 2vw;
     cursor: pointer;
     margin-bottom: 2vh;
+    width: 10vw;
+    height: 6vh;
+    font-size: .7rem;
 }
 
-.village-list {
+.villageList {
     background-color: var(--background-color-light);
     padding: 1vh 1vw;
     border-radius: .5vw;
@@ -21,7 +24,7 @@
     margin-bottom: 2vh;
 }
 
-.search-box {
+.searchBox {
     width: 98%; 
     padding: 2vh 1vw;
     margin-bottom: 1vh;
@@ -31,13 +34,13 @@
     color: var(--text-color-light);
 }
 
-.search-box::placeholder {
+.searchBox::placeholder {
     color: var(--text-color-light);
     opacity: 0.7;
 }
 
 /* Sort and Pagination Container */
-.sort-page-container {
+.sortPageContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,7 +86,7 @@
 }
 
 /* Village Items */
-.village-item {
+.villageitem {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,6 +94,7 @@
     padding: 1vh .8vw;
     border-radius: .5vw;
     margin-bottom: 2vh;
+    
 }
 
 .buttons button {
@@ -102,13 +106,16 @@
     padding: 1vh 1vw;
     cursor: pointer;
     font-weight: bold;
+    width: auto;
+    font-size: 1.1vw;
+
 }
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+  display: block;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2000; /* Sit on top */
     left: 50%; /* Center horizontally */
     top: 50%; /* Center vertically */
     transform: translate(-50%, -50%); /* Adjust position */
@@ -120,23 +127,14 @@
     border-radius: 5px;
     border: 1px solid var(--background-color-light2); /* Border color */
 }
-.modal {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.modal.show {
-    display: block;
-    opacity: 1;
-}
 
 
-.modal-content {
+.modalcontent {
     padding: 1vw;
     
 }
 
-.close-btn {
+.closebtn {
     position: absolute;
     top: 1vw;
     right: 1vw;
@@ -147,16 +145,15 @@
     color: white;
 }
 
-.close-btn:hover,
+.closebtn:hover,
 
-.close-btn:focus {
+.closebtn:focus {
     text-decoration: none;
     cursor: pointer;
 }
 
 
-.modal-content form button[type="submit"] {
-    background-color: aquamarine;
+.modalcontent form button[type="submit"] {
     width: 100%; /* توحيد عرض الزر ليكون مساويًا للحقول */
     padding:1vh 1vw;
     border-radius: .5vw;
@@ -171,7 +168,7 @@
 
 }
 
-.modal-content form button[type="submit"]:hover {
+.modalcontent form button[type="submit"]:hover {
     background-color: var(--background-color-light3); /* تغيير لون الزر عند التمرير */
 }
 
@@ -180,7 +177,6 @@
 
 /* Style for Modal */
 .modal2 {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1000; /* Sit on top */
     left: 0;
@@ -193,7 +189,7 @@
 }
 
 /* Modal content */
-.modal2 .modal-content {
+.modal2 .modalcontent {
     background-color: #2c3e50; /* Dark background */
     color: #ecf0f1; /* Light text */
     width: 35vw; /* Fixed width based on image */
@@ -210,7 +206,7 @@
 }
 
 
-#view-village-modal .modal-content{
+#view-village-modal .modalcontent{
     margin-top: 15vh;
     height: 70vh;
 }
@@ -254,9 +250,8 @@
 
 .modalUpdate {
 
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 3000; /* Sit on top */
     left: 50%; /* Center horizontally */
     top: 50%; /* Center vertically */
     transform: translate(-50%, -50%); /* Adjust position */
@@ -273,7 +268,7 @@
 
 
 
-.modal-content label {
+.modalcontent label {
     display: block;
     margin: 1vh 0;
     font-size: .9rem; /* Adjust label font size */
@@ -282,9 +277,9 @@
 
 
 /*for all label and faild */
-.modal-content input,
-.modal-content button,
-.modal-content select {
+.modalcontent input,
+.modalcontent button,
+.modalcontent select {
     margin-bottom: .5vh;
     font-size: 1rem; /* Adjust input and button font size */
     width: 95%;
@@ -299,15 +294,15 @@
 
 
 
-.close-btn {
+.closebtn {
     color: #aaa;
     float: right;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.close-btn:hover,
-.close-btn:focus {
+.closebtn:hover,
+.closebtn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -315,15 +310,12 @@
 
 
 .modalUpdateDemographic{
-    display: none; /* Hidden by default */
+  
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 1000; /* Sit on top */
     left: 50%; /* Center horizontally */
     top: 50%; /* Center vertically */
-    transform: translate(-50%, -50%); /* Adjust position */
-    width: 30vw; /* Set a smaller width */
-
-    
+    transform: translate(-50%, -50%); /* Adjust position */    
     height: 85vh;
     width: 40vw;
     max-width: 40vw; /* Maximum width */
@@ -352,35 +344,47 @@
     margin-top: 3vh;
 }
 
-.village-item  {
+.villageitem  {
     place-items: left;
+    display: flex;
 }
 
+
+.villageitem .buttons  {
+  display: flex;
+  flex-direction: row-reverse;
+  place-items: left;
+  width: auto;  
+  
+}
+
+
 @media screen and (max-width: 830px) {
-    .village-item {
+    .villageitem {
         background-color: var(--background-color-light2);
         width: 100%; 
     }
     
-    .village-item .buttons {
+    .villageitem .buttons {
         display: flex;
         flex-direction: column; 
         gap: .2rem;
-        width: 50%; 
+        width: 50%;
     }
     
  
-    .village-item .buttons button {
+    .villageitem .buttons button {
 
         width: 100%; 
         font-size: .7rem; 
         cursor: pointer; 
         border-radius: .5vw; 
         text-align: center; 
+
     }
  
 
-    #view-village-modal .modal-content{
+    #view-village-modal .modalcontent{
         margin-top: 20vh;
         height: 60vh;
         width: 70vw;
@@ -412,7 +416,7 @@
         max-height: 70vh;   
     }
 
-    #add-village-modal{
+    #addVillageModal{
         width: 80vw;
         height: 75vh;
         max-width: 80vw; 
@@ -420,7 +424,7 @@
     }
 
     
-.add-new {
+.addnew {
     background-color: var(--background-color-light2);
     color: var(--text-color-light);
     border: none;
@@ -428,6 +432,11 @@
     padding: 1vh 1vw;
     cursor: pointer;
     margin-bottom: 1vh;
-    font-size: 1rem;
+    font-size: .7rem;
+    width: 15vw;
+    height: 6vh;
 }
 }
+
+
+

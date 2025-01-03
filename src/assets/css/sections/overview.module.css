@@ -12,28 +12,13 @@
 
 }
 
-<<<<<<< HEAD
-.stat-item {
-=======
 .statItem {
->>>>>>> 7a432b0 (add village manegement and overview)
     flex: 1;
     background-color: var(--background-color-light);
     padding: 1vw;
     border-radius: .5vw;
     text-align: center;
 }
-
-
-/*
-.charts {
-    display: flex;
-    gap: 1vw;
-    margin-top: 2vw;
-    font-size: 1vw;
-
-}
-*/
 
 .charts {
     display: flex;

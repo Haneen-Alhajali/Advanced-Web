@@ -1,10 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useMutation, gql } from "@apollo/client";
 import styles from "../../assets/css/sections/village-management.module.css";
 
-const AddingVillage = ({ onClose ,onVillageAdded}) => {
-  // استرجاع القرى المخزنة في Local Storage
-  const storedVillages = JSON.parse(localStorage.getItem("dataVillage")) || [];
-  
+const ADD_VILLAGE = gql`
+  mutation AddVillage(
+    $name: String
+    $Region: String
+    $land: Int
+    $Latitude: Float
+    $Longitude: Float
+    $Tags: String
+    $img: String
+  ) {
+    addVillage(
+      name: $name
+      Region: $Region
+      land: $land
+      Latitude: $Latitude
+      Longitude: $Longitude
+      Tags: $Tags
+      img: $img
+    ) {
+      id
+      name
+      Region
+      land
+      Latitude
+      Longitude
+      Tags
+      img
+    }
+  }
+`;
+
+const AddingVillage = ({ onClose, onVillageAdded }) => {
   const [formData, setFormData] = useState({
     name: "",
     region: "",
@@ -14,6 +43,8 @@ const AddingVillage = ({ onClose ,onVillageAdded}) => {
     tags: "",
     img: "",
   });
+
+  const [addVillage] = useMutation(ADD_VILLAGE);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,44 +62,28 @@ const AddingVillage = ({ onClose ,onVillageAdded}) => {
     }
   };
 
-  const saveAddedDataToLocal = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await addVillage({
+        variables: {
+          name: formData.name,
+          Region: formData.region,
+          land: parseFloat(formData.land),
+          Latitude: parseFloat(formData.latitude),
+          Longitude: parseFloat(formData.longitude),
+          Tags: formData.tags,
+          img: formData.img || "https://via.placeholder.com/100",
+        },
+      });
+      alert("Village added successfully!");
+      onVillageAdded();
 
-    // إنشاء القرية الجديدة
-    const newVillage = {
-      id: storedVillages.length + 1,
-      name: formData.name,
-      Region: formData.region,
-      land: parseFloat(formData.land),
-      Latitude: parseFloat(formData.latitude),
-      Longitude: parseFloat(formData.longitude),
-      Tags: formData.tags,
-      img: formData.img || "https://via.placeholder.com/100",
-      population: "N/A", // يمكن تحديث هذه القيم لاحقًا
-      age: [],
-      gender: [],
-      growthRate: 0,
-      Urban: true, // افتراضيًا يمكن تغييره
-    };
-
-    // تحديث Local Storage
-    const updatedVillages = [...storedVillages, newVillage];
-    localStorage.setItem("dataVillage", JSON.stringify(updatedVillages));
-
-    // إعادة ضبط النموذج
-    setFormData({
-      name: "",
-      region: "",
-      land: "",
-      latitude: "",
-      longitude: "",
-      tags: "",
-      img: "",
-    });
-
-    alert("Village added successfully!");
-    onVillageAdded();
-    onClose();
+      onClose();
+    } catch (error) {
+      console.error("Error adding village:", error);
+      alert("Failed to add village.");
+    }
   };
 
   return (
@@ -78,7 +93,7 @@ const AddingVillage = ({ onClose ,onVillageAdded}) => {
           ×
         </span>
         <h3>Add New Village</h3>
-        <form onSubmit={saveAddedDataToLocal}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Village Name:</label>
           <input
             type="text"

@@ -1,5 +1,6 @@
-import React, { useCallback, useRef, useEffect } from "react";
+import React, { useCallback, useRef, useEffect, useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../assets/css/sections/overview.module.css";
 import { useMemo } from "react";
 import {
@@ -15,6 +16,7 @@ import {
   DoughnutController,
   BarController,
 } from "chart.js";
+
 Chart.register(
   ArcElement,
   BarElement,
@@ -28,74 +30,13 @@ Chart.register(
   BarController
 );
 
-const Overview = () => {
-  /*
-  localStorage.removeItem("dataVillage");
-  const datavillgeUpdate = [
-    {
-      id: 1,
-      name: "Jabalia",
-      Region: "- Gaza Strip",
-      land: 10,
-      Latitude: 31.6,
-      Longitude: 35.22,
-      Tags: "undifined",
-      img: "https://via.placeholder.com/100",
-      population: "4",
-      age: [5, 75, 5, 5],
-      gender: [30, 70],
-      growthRate: 31.6,
-      Urban: true,
-    },
-    {
-      id: 2,
-      name: "Beit Lahia",
-      Region: "- Gaza Strip",
-      land: 15,
-      Latitude: 31.5,
-      Longitude: 34.4,
-      Tags: "undifined",
-      img: "https://via.placeholder.com/100",
-      population: "3",
-      age: "30,60,10",
-      gender: 20,
-      growthRate: 38,
-      Urban: true,
-    },
-    {
-      id: 3,
-      name: "Quds",
-      Region: "- West Bank",
-      land: 17,
-      Latitude: 31.76,
-      Longitude: 35.21,
-      Tags: "undifined",
-      img: "https://via.placeholder.com/100",
-      population: "6",
-      age: "30,60,10",
-      gender: 50,
-      growthRate: 64.01,
-      Urban: false,
-    },
-    {
-      id: 4,
-      name: "Shejaiya",
-      Region: "- Gaza Strip",
-      land: 33,
-      Latitude: 31.26,
-      Longitude: 35.0,
-      Tags: "undifined",
-      img: "https://via.placeholder.com/100",
-      population: "11",
-      age: "30,60,10",
-      gender: 90,
-      growthRate: 8.3,
-      Urban: true,
-    },
-  ];
+// إعداد Apollo Client
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
 
-  localStorage.setItem("dataVillage", JSON.stringify(datavillgeUpdate));
-*/
+const Overview = () => {
   const googleMapsApiKey = "AIzaSyAywsxQ1DTWXBu1k6GonbudlIYXdQXdOdA";
   useLoadScript({
     googleMapsApiKey: googleMapsApiKey,
@@ -110,17 +51,52 @@ const Overview = () => {
     console.log("Map Loaded", map);
   }, []);
 
-  const dataVillage = useMemo(() => {
-    return JSON.parse(localStorage.getItem("dataVillage")) || [];
-  }, []);
+  // استعلام GraphQL لجلب البيانات
+  const GET_VILLAGES = gql`
+    query GetVillages {
+      villages {
+        id
+        name
+        population
+        age
+        gender
+        Latitude
+        Longitude
+        land
+        Urban
+      }
+    }
+  `;
 
-  const firstVillageAge = dataVillage[0].age;
-  const firstVillageGender = dataVillage[0].gender;
-  const villageNames = dataVillage.map((village) => village.name);
-  const villagePopulations = dataVillage.map((village) =>parseFloat(village.population));
+  const [villagesData, setVillagesData] = useState([]);
 
   useEffect(() => {
-    // Destroy previous charts if any
+    
+    // جلب البيانات من GraphQL
+    client
+      .query({
+        query: GET_VILLAGES,
+      })
+      .then((response) => {
+        setVillagesData(response.data.villages);
+      })
+      .catch((error) => {
+        console.error("Error fetching data", error);
+      });
+  }, []);
+
+  const firstVillageAge = villagesData[0]?.age || [];
+  const firstVillageGender = villagesData[0]?.gender || [];
+  const villageNames = villagesData.map((village) => village.name);
+  const villagePopulations = villagesData.map((village) => parseFloat(village.population));
+
+  // حساب القيم
+  const totalVillages = villagesData.length;
+  const totalUrbanAreas = villagesData.filter((village) => village.Urban).length;
+  const totalPopulation = villagesData.reduce((sum, village) => sum + parseFloat(village.population), 0);
+  const averageLandArea = villagesData.reduce((sum, village) => sum + parseFloat(village.land), 0) / totalVillages;
+
+  useEffect(() => {
     if (ageChartRef.current) ageChartRef.current.destroy();
     if (genderChartRef.current) genderChartRef.current.destroy();
     if (barChartRef.current) barChartRef.current.destroy();
@@ -146,7 +122,6 @@ const Overview = () => {
       },
     });
 
-    // Gender Ratios Chart
     const genderCtx = document.getElementById("genderChart").getContext("2d");
     genderChartRef.current = new Chart(genderCtx, {
       type: "pie",
@@ -162,7 +137,6 @@ const Overview = () => {
       },
     });
 
-    // Bar Chart
     const barCtx = document.getElementById("barChart").getContext("2d");
     barChartRef.current = new Chart(barCtx, {
       type: "bar",
@@ -179,39 +153,25 @@ const Overview = () => {
         ],
       },
     });
+
     return () => {
       if (ageChartRef.current) ageChartRef.current.destroy();
       if (genderChartRef.current) genderChartRef.current.destroy();
       if (barChartRef.current) barChartRef.current.destroy();
     };
-  }, [firstVillageAge,firstVillageGender,villageNames,villagePopulations]);
-
+  }, [firstVillageAge, firstVillageGender, villageNames, villagePopulations]);
 
   const ageChartRef = useRef(null);
   const genderChartRef = useRef(null);
   const barChartRef = useRef(null);
-  
-  const totalVillages = dataVillage.length;
-  const totalUrbanAreas = dataVillage.filter((village) => village.Urban === true).length;
-  const totalPopulation = dataVillage.reduce((sum, village) => sum + parseFloat(village.population),0);
-  const averageLandArea = dataVillage.reduce((sum, village) => sum + village.land, 0) / totalVillages;
 
-  const locations = dataVillage.map((village) => ({
+  const locations = villagesData.map((village) => ({
     id: village.id,
     name: village.name,
     lat: parseFloat(village.Latitude),
     lng: parseFloat(village.Longitude),
   }));
-  //console.log("Locations:", locations);
 
-  /*  const locations = [
-    { id: 1, name: "Jabalia", lat: 31.6, lng: 35.2245 },
-    { id: 2, name: "Beit Lahia", lat: 31.55, lng: 35.25 },
-    { id: 3, name: "Quds", lat: 31.7683, lng: 35.2137 },
-    { id: 4, name: "Shejaiya", lat: 31.52, lng: 35.21 },
-  ];
-  console.log("Locations:", locations);
-*/
   return (
     <div className={styles.overview}>
       <h1>Overview</h1>

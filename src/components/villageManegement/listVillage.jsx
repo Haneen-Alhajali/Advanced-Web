@@ -1,18 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
+import { useQuery, useMutation } from "@apollo/client";
 import styles from "../../assets/css/sections/village-management.module.css";
 import ViewVillage from "../villageManegement/viewVillage";
 import UpdateVillage from "../villageManegement/updateVillage";
 import UpdateDemographic from "../villageManegement/updateDemographic";
+import { gql } from "@apollo/client";
 
-const ListVillage = ({ reloadList, searchQuery,sortOption }) => {
+// تعريف استعلام GraphQL لجلب القرى
+const GET_VILLAGES = gql`
+  query GetVillages {
+    villages {
+      id
+      name
+      Region
+      land
+      Latitude
+      Longitude
+      Tags
+      img
+      population
+      age
+      gender
+      growthRate
+      Urban
+    }
+  }
+`;
+
+// تعريف استعلام GraphQL لحذف قرية
+const DELETE_VILLAGE = gql`
+  mutation DeleteVillage($id: ID!) {
+    deleteVillage(id: $id) {
+      id
+    }
+  }
+`;
+
+const ListVillage = ({ reloadList, searchQuery, sortOption }) => {
   const [villages, setVillages] = useState([]);
   const [selectedVillage, setSelectedVillage] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdatModalOpen] = useState(false);
   const [isDemographicModalOpen, setIsDemographicModalOpen] = useState(false);
-  const [updateVillageModal, setUpdateVillageModal] = useState(false);
-  const [updateDemographicModal, setUpdateDemographicModal] = useState(false);
-  let flagOfsearchQuery = false;
+
+  // استخدام الاستعلام لجلب البيانات
+  const { loading, error, data, refetch } = useQuery(GET_VILLAGES);
+
+  // استخدام الـ Mutation لحذف قرية
+  const [deleteVillage] = useMutation(DELETE_VILLAGE);
+
+  // إعادة تحميل القرى عند تغيير reloadList
+  useEffect(() => {
+    if (reloadList) {
+      refetch(); // إعادة تحميل البيانات
+    }
+  }, [reloadList, refetch]);
+
+  useEffect(() => {
+    if (data) {
+      setVillages(data.villages);
+    }
+  }, [data]);
 
   const filteredVillages = searchQuery
     ? villages.filter((village) =>
@@ -20,35 +68,20 @@ const ListVillage = ({ reloadList, searchQuery,sortOption }) => {
       )
     : villages;
 
-    const sortedVillages =
+  const sortedVillages =
     sortOption === "name"
-      ? [...filteredVillages].sort((a, b) =>
-          a.name.localeCompare(b.name)
-        )
+      ? [...filteredVillages].sort((a, b) => a.name.localeCompare(b.name))
       : filteredVillages;
 
-  const trggerUpdateVillage = () => {
-    setUpdateVillageModal((prev) => !prev);
+  const handleDelete = async (villageId) => {
+    try {
+      await deleteVillage({ variables: { id: villageId } });
+      setVillages(villages.filter((v) => v.id !== villageId)); // تحديث الحالة بعد الحذف
+      alert(`Village with ID: ${villageId} deleted.`);
+    } catch (err) {
+      console.error("Error deleting village:", err);
+    }
   };
-
-  const trggerUpdateDemographic = () => {
-    setUpdateDemographicModal((prev) => !prev);
-  };
-
-  const fetchVillages = () => {
-    const storedVillages =
-      JSON.parse(localStorage.getItem("dataVillage")) || [];
-    setVillages(storedVillages);
-  };
-
-  useEffect(() => {
-    fetchVillages();
-  }, [
-    reloadList,
-    updateVillageModal,
-    updateDemographicModal,
-    flagOfsearchQuery,
-  ]);
 
   const viewModal = (village) => {
     setSelectedVillage(village);
@@ -64,25 +97,25 @@ const ListVillage = ({ reloadList, searchQuery,sortOption }) => {
     setSelectedVillage(village);
     setIsDemographicModalOpen(true);
   };
+
   const closeModal = () => {
     setIsViewModalOpen(false);
     setIsUpdatModalOpen(false);
     setIsDemographicModalOpen(false);
     setSelectedVillage(null);
   };
-  if (searchQuery !== "") {
-    flagOfsearchQuery = true;
-  } else {
-    flagOfsearchQuery = false;
-  }
+
   return (
     <div className={styles.villageItemContainer}>
-      {sortedVillages.length > 0 ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error.message}</p>
+      ) : sortedVillages.length > 0 ? (
         sortedVillages.map((village) => (
           <div key={village.id} className={styles.villageitem}>
             <span>
-              {village.name}
-              {village.Region}
+              {village.name} {village.Region}
             </span>
             <div className={styles.buttons}>
               <button
@@ -99,17 +132,7 @@ const ListVillage = ({ reloadList, searchQuery,sortOption }) => {
               </button>
               <button
                 className={styles.delete}
-                onClick={() => {
-                  const updatedVillages = villages.filter(
-                    (v) => v.id !== village.id
-                  );
-                  setVillages(updatedVillages);
-                  localStorage.setItem(
-                    "dataVillage",
-                    JSON.stringify(updatedVillages)
-                  );
-                  alert(`Village with ID: ${village.id} deleted.`);
-                }}
+                onClick={() => handleDelete(village.id)}
               >
                 Delete Village
               </button>
@@ -130,19 +153,11 @@ const ListVillage = ({ reloadList, searchQuery,sortOption }) => {
       )}
 
       {isUpdateModalOpen && selectedVillage && (
-        <UpdateVillage
-          village={selectedVillage}
-          onClose={closeModal}
-          onUpdate={trggerUpdateVillage}
-        />
+        <UpdateVillage village={selectedVillage} onClose={closeModal} />
       )}
 
       {isDemographicModalOpen && selectedVillage && (
-        <UpdateDemographic
-          village={selectedVillage}
-          onClose={closeModal}
-          onUpdate={trggerUpdateDemographic}
-        />
+        <UpdateDemographic village={selectedVillage} onClose={closeModal} />
       )}
     </div>
   );

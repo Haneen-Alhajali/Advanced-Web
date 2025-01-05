@@ -1,7 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { useMutation, gql } from "@apollo/client";
 import styles from "../../assets/css/sections/village-management.module.css";
 
-const UpdateDemographic = ({ village, onClose,onUpdate }) => {
+// تعريف Mutation لتحديث البيانات
+const UPDATE_VILLAGE_DEMOGRAPHIC = gql`
+  mutation UpdateVillage(
+    $id: ID!
+    $population: Int
+    $age: String
+    $gender: String
+    $growthRate: Float
+  ) {
+    updateVillage(
+      id: $id
+      population: $population
+      age: $age
+      gender: $gender
+      growthRate: $growthRate
+    ) {
+      id
+      population
+      age
+      gender
+      growthRate
+    }
+  }
+`;
+
+const UpdateDemographic = ({ village, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
     population: "",
     age: "",
@@ -9,7 +35,9 @@ const UpdateDemographic = ({ village, onClose,onUpdate }) => {
     growthRate: "",
   });
 
-  // تحميل البيانات القديمة عند فتح النموذج
+  // استخدام Apollo Mutation
+  const [updateVillage, { loading, error }] = useMutation(UPDATE_VILLAGE_DEMOGRAPHIC);
+
   useEffect(() => {
     if (village) {
       setFormData({
@@ -30,18 +58,27 @@ const UpdateDemographic = ({ village, onClose,onUpdate }) => {
     }));
   };
 
-  // حفظ البيانات الجديدة في LocalStorage
-  const demographicUpdate = (e) => {
+  // إرسال البيانات إلى الـ Backend عبر GraphQL
+  const demographicUpdate = async (e) => {
     e.preventDefault();
-    const dataVillages = JSON.parse(localStorage.getItem("dataVillage")) || [];
-    const updatedVillages = dataVillages.map((v) =>
-      v.id === village.id ? { ...v, ...formData } : v
-    );
 
-    localStorage.setItem("dataVillage", JSON.stringify(updatedVillages));
-    alert("Village data updated successfully!");
-    if (onClose) onClose();
-    onUpdate();
+    try {
+      const { data } = await updateVillage({
+        variables: {
+          id: village.id,
+          population: parseInt(formData.population),
+          age: formData.age,
+          gender: formData.gender,
+          growthRate: parseFloat(formData.growthRate),
+        },
+      });
+
+      alert("Village data updated successfully!");
+      if (onClose) onClose();
+    } catch (err) {
+      console.error("Error updating village:", err);
+      alert("Failed to update village data.");
+    }
   };
 
   return (
@@ -54,7 +91,7 @@ const UpdateDemographic = ({ village, onClose,onUpdate }) => {
         <form id="update-Demographic-form" onSubmit={demographicUpdate}>
           <label htmlFor="Population-Size">Population Size:</label>
           <input
-            type="text"
+            type="number"
             className="update-village-Population"
             name="population"
             value={formData.population}
@@ -86,15 +123,19 @@ const UpdateDemographic = ({ village, onClose,onUpdate }) => {
           <br />
           <label htmlFor="update-Population">Population Growth Rate:</label>
           <input
-            type="text"
+            type="number"
             className="update-Growth-Population"
             name="growthRate"
+            step="0.01"
             value={formData.growthRate}
             onChange={handleInputChange}
             required
           />
           <br />
-          <button type="submit">Update Demographic Data</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Updating..." : "Update Demographic Data"}
+          </button>
+          {error && <p className={styles.error}>Error: {error.message}</p>}
         </form>
       </div>
     </div>

@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useMutation, gql } from '@apollo/client';
 import styles from "../../assets/css/sections/village-management.module.css";
 
-const UpdateVillage = ({ village, onClose, onUpdate }) => {
+const UPDATE_VILLAGE = gql`
+  mutation UpdateVillage($id: ID!, $name: String, $Region: String, $land: Int, $Latitude: Float, $Longitude: Float, $img: String) {
+    updateVillage(id: $id, name: $name, Region: $Region, land: $land, Latitude: $Latitude, Longitude: $Longitude, img: $img) {
+      id
+      name
+      Region
+      land
+      Latitude
+      Longitude
+      img
+    }
+  }
+`;
+
+const UpdateVillage = ({ village, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     Region: "",
@@ -10,6 +25,8 @@ const UpdateVillage = ({ village, onClose, onUpdate }) => {
     Longitude: "",
     img: "",
   });
+
+  const [updateVillage] = useMutation(UPDATE_VILLAGE);
 
   // تحميل البيانات القديمة عند فتح المكون
   useEffect(() => {
@@ -41,20 +58,25 @@ const UpdateVillage = ({ village, onClose, onUpdate }) => {
     }
   };
 
-  const villages=JSON.parse(localStorage.getItem('dataVillage')) || []
-
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    const updatedVillages = villages.map((villageHandel) => {
-      if (villageHandel.id === village.id) {
-        return { ...villageHandel, ...formData };
-      }
-      return villageHandel;
-    });
-    
-    localStorage.setItem('dataVillage', JSON.stringify(updatedVillages));
-    onUpdate(); 
-    onClose();
+    try {
+      await updateVillage({
+        variables: {
+          id: village.id,
+          name: formData.name,
+          Region: formData.Region,
+          land: parseInt(formData.land),
+          Latitude: parseFloat(formData.Latitude),
+          Longitude: parseFloat(formData.Longitude),
+          img: formData.img,
+        },
+      });
+      onClose(); 
+
+    } catch (error) {
+      console.error("Error updating village:", error);
+    }
   };
 
   return (

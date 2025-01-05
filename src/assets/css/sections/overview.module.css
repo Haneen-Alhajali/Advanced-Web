@@ -12,11 +12,8 @@
 
 }
 
-<<<<<<< HEAD
-.stat-item {
-=======
+
 .statItem {
->>>>>>> 7a432b0 (add village manegement and overview)
     flex: 1;
     background-color: var(--background-color-light);
     padding: 1vw;

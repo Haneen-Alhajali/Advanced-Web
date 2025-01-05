@@ -11,6 +11,7 @@ const VillageManagement = () => {
 
   const triggerReloadList = () => {
     setReloadList((prev) => !prev);
+
   };
 
   const addVillageModel = () => {

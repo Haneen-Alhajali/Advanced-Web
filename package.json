@@ -5,17 +5,23 @@
   "dependencies": {
     "apollo-server": "^3.13.0",
     "cors": "^2.8.5",
-    "cra-template": "1.2.0",
     "express": "^4.21.2",
-    "express-graphql": "^0.12.0",
     "fs": "^0.0.1-security",
-    "graphql": "^15.9.0",
+    "@apollo/client": "^3.12.4",
+    "@react-google-maps/api": "^2.20.5",
+    "chart.js": "^4.4.7",
+    "cra-template": "1.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
     "web-vitals": "^4.2.4",
-    "ws": "^8.18.0"
+    "ws": "^8.18.0",
+    
+    "apollo-server-express": "^3.13.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.9.0",
+    "mysql2": "^3.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9"
   }
 }

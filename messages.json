@@ -70,6 +70,11 @@
       "sender": "admin3",
       "text": "Hi! Thanks for the feedback, and we’re thrilled you like the platform! Yes, we have some exciting features in the pipeline, including real-time collaboration and enhanced reporting tools. We're always working on improving the platform to better serve our users.",
       "timestamp": "2025-01-07T20:45:24.616Z"
+    },
+    {
+      "sender": "user1",
+      "text": "That sounds fantastic! Is there a timeline for when those features will be available?",
+      "timestamp": "2025-01-07T21:53:01.679Z"
     }
   ]
 }

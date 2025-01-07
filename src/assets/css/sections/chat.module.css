@@ -1,124 +1,146 @@
-@import '../colors.css';
+@import url('../colors.css');
 
-  body {
-    margin-top: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f3f4f6;
-    color: var(--text-color);
-  }
-  
-  .chat-container {
-    padding: 1rem;
-  }
-  
-  .chat-title {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    color: var(--text-color-light);
-  }
-  
-  .search-bar {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid;
-    border-radius: 5px;
-    background-color: white;
-  }
-  
-  .box {
-    background-color: var(--background-color-light);
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid var(--background-color-light);
-    margin-bottom: 1rem;
-  }
-  
-  .available-admins-box h2 {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-  
-  .admin-list {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .admin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-  
-  .admin .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-  }
-  
-  
-  .chat-box .chat-header {
-    font-size: 1.1rem;
-    margin: 0;
-    padding-bottom: 0;
-  }
-  
-  .chat-messages {
-    max-height: 500px;
-    overflow-y: auto;
-    background-color: var(--background-color-light);
-    padding: 0.5rem;
-    border: .5px solid var(--background-color-light3);
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    padding-bottom: 4rem;
-  }
-  
-  .message {
-    padding-bottom: 0.5rem;
-  }
-  
-  .admin-message .text {
-    color: var(--blue-color-light);
-  }
-  
-  .user-message .text {
-    color: var(--user-msg-color);
-  }
-  .message .sender{
-    color: var(--text-color-dark);
-  }
-  
-  .message-input {
-    display: flex;
-    flex-direction:column;
-  }
-  
-  textarea {
-    flex: 1;
-    resize: none;
-    padding: 0.5rem;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: white;
-  }
-  
-  .Send-but {
-    width: 3rem;
-    padding: 0.6rem .5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--blue-color-light);
-    color: white;
-    cursor: pointer;
-  }
-  
-  .Send-but:hover {
-    background-color: var(--blue-color-dark);
-  }
-  
+.chatContainer {
+  padding: 1rem;
+  margin-top: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+}
+
+.chatTitle {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  color: var(--text-color-light);
+}
+
+.searchBar {
+  width: 98%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--background-color-light3);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 0.83rem;
+}
+
+.box {
+  background-color: var(--background-color-light);
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--background-color-light);
+  margin-bottom: 1rem;
+}
+
+.availableAdminsBox h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: left; 
+}
+
+.adminList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.admin .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.chatBox .chatHeader {
+  font-size: 1.1rem;
+  text-align: left; 
+  margin: 0;
+}
+
+.chatMessages {
+  max-height: 90px;
+  overflow-y: auto;
+  background-color: var(--background-color-light);
+  padding: 0.5rem;
+  border: .5px solid var(--background-color-light3);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding-bottom: 4rem;
+}
+
+.chatMessages::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+.chatMessages::-webkit-scrollbar-thumb {
+  background-color: var(--background-color-light2); /* Custom scrollbar color */
+  border-radius: 4px;
+}
+
+.chatMessages::-webkit-scrollbar-track {
+  background: #2a2a2a; /* Track color */
+}
+.message {
+  padding-bottom: 0.5rem;
+}
+
+.otherMessage .text {
+  color: var(--blue-color-light);
+}
+
+.yourMessage .text {
+  color: var(--user-msg-color);
+}
+
+.message .sender {
+  color: var(--text-color-dark);
+}
+
+.messageInput {
+  display: flex;
+  flex-direction:column;
+  height: 130px;
+}
+
+.messageInput textarea {
+  flex: 1;
+  resize: none;
+  padding: 0.5rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 15px;
+}
+
+.sendBut {
+  width: 3rem;
+  padding: 0.6rem .5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--blue-color-light);
+  color: white;
+  cursor: pointer;
+
+}
+
+.sendBut:hover {
+  background-color: var(--blue-color-dark);
+}
+
+.noResults {
+  color: #ff0000;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}

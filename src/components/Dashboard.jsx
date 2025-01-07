@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Overview from '../pages/Overview';
 import VillageManagement from '../pages/VillageManagement';
-import Chat from '../pages/Chat';
+import Chat from '../pages/chatSystem/Chat';
 import Gallery from '../pages/Gallery';
 import styles from '../assets/css/dashboard.module.css';
 

@@ -60,7 +60,7 @@ const Sidebar = () => {
           <li><button onClick={() => navigate('/dashboard/gallery')} className={styles.sidebarBtn}>Gallery</button></li>
         </ul>
         <div className={styles.userInfo}>
-          <img src={`../assets/images/${currentUser.role}-avatar.png`} alt="User Avatar" className={styles.userAvatar} />
+          <img src={`https://via.placeholder.com/40`} alt="User Avatar" className={styles.userAvatar} />
           <div className={styles.userDetails}>
             <span>{currentUser.fullName}</span>
             <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>

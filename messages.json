@@ -1,0 +1,75 @@
+{
+  "user2": [
+    {
+      "sender": "admin1",
+      "text": "hi",
+      "timestamp": "2025-01-07T16:09:07.740Z"
+    },
+    {
+      "sender": "user1",
+      "text": "hi",
+      "timestamp": "2025-01-07T16:23:25.562Z"
+    },
+    {
+      "sender": "user1",
+      "text": "kk",
+      "timestamp": "2025-01-07T16:42:11.057Z"
+    }
+  ],
+  "admin1": [
+    {
+      "sender": "user1",
+      "text": "hi!",
+      "timestamp": "2025-01-07T16:12:20.157Z"
+    },
+    {
+      "sender": "admin1",
+      "text": "hello!",
+      "timestamp": "2025-01-07T17:25:15.530Z"
+    },
+    {
+      "sender": "user1",
+      "text": "can I ask something?",
+      "timestamp": "2025-01-07T19:07:53.021Z"
+    },
+    {
+      "sender": "admin1",
+      "text": "yes of course! go ahead",
+      "timestamp": "2025-01-07T19:40:23.871Z"
+    },
+    {
+      "sender": "user1",
+      "text": "I have an issue with my account login. Can you assist me?",
+      "timestamp": "2025-01-07T20:17:28.673Z"
+    },
+    {
+      "sender": "admin1",
+      "text": "I'd be happy to help. Can you please provide me with the error message you're seeing when you try to log in?",
+      "timestamp": "2025-01-07T20:21:21.401Z"
+    }
+  ],
+  "admin2": [
+    {
+      "sender": "user1",
+      "text": "test1",
+      "timestamp": "2025-01-07T17:50:19.201Z"
+    }
+  ],
+  "admin3": [
+    {
+      "sender": "user2",
+      "text": " I’ve been using your platform for a while now, and I really like it! I just wanted to ask if you have plans to add any new features soon?",
+      "timestamp": "2025-01-07T20:43:17.406Z"
+    },
+    {
+      "sender": "user1",
+      "text": "me too! it's amazing ",
+      "timestamp": "2025-01-07T20:44:45.170Z"
+    },
+    {
+      "sender": "admin3",
+      "text": "Hi! Thanks for the feedback, and we’re thrilled you like the platform! Yes, we have some exciting features in the pipeline, including real-time collaboration and enhanced reporting tools. We're always working on improving the platform to better serve our users.",
+      "timestamp": "2025-01-07T20:45:24.616Z"
+    }
+  ]
+}

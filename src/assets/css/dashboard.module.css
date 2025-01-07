@@ -57,6 +57,7 @@ body {
     text-align: left;
     font-size: 1.1rem;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .sidebarBtn:hover {
@@ -101,6 +102,7 @@ body {
     margin: 0;
     font-size: 0.9rem;
     background-color: var(--background-color-light);
+    border: none;
 }
 
 .userDetails .logoutBtn:hover {

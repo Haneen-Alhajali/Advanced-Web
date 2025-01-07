@@ -18,6 +18,7 @@ const Login = () => {
             alert("Invalid username or password!");
         } else {
             localStorage.setItem("currentUser", JSON.stringify(user));
+            sessionStorage.setItem("currentUser", JSON.stringify(user));
             alert(`Welcome, ${user.fullName}`);
             window.location.href = "/dashboard";
         }

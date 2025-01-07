@@ -21,19 +21,19 @@
     animation: fadeIn 0.6s ease-in-out;
 }
 
-h2 {
+.LoginSignBody h2 {
     margin: 0 0 1rem 0;
     text-align: center;
     font-size: 1.5rem;
 }
 
-label {
+.LoginSignBody label {
     display: block;
     margin-bottom: 0.4rem;
     font-size: 1rem;
 }
 
-input {
+.LoginSignBody input {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
@@ -45,12 +45,12 @@ input {
     transition: all 0.2s ease-in-out;
 }
 
-input:focus {
+.LoginSignBody input:focus {
     outline: 2px solid var(--blue-color-light);
     outline-offset: 2px;
 }
 
-button {
+.LoginSignBody button {
     width: 100%;
     padding: 0.8rem;
     background-color: var(--blue-color-light);
@@ -62,27 +62,27 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
-button:hover {
+.LoginSignBody button:hover {
     background-color: var(--blue-color-dark);
 }
 
-button:active {
+.LoginSignBody button:active {
     transform: scale(0.98);
 }
 
-p {
+.LoginSignBody p {
     text-align: center;
     margin-top: 1rem;
     font-size: 0.9rem;
     color: var(--text-color-dark);
 }
 
-a {
+.LoginSignBody a {
     color: var(--blue-color-light);
     text-decoration: none;
 }
 
-a:hover {
+.LoginSignBody a:hover {
     text-decoration: underline;
 }
 
@@ -92,19 +92,19 @@ a:hover {
         padding: 1.5rem;
     }
 
-    input, button {
+    .LoginSignBody input, .LoginSignBody button {
         font-size: 0.9rem;
     }
 
-    h2 {
+    .LoginSignBody h2 {
         font-size: 1.4rem;
     }
 
-    label {
+    .LoginSignBody label {
         font-size: 0.9rem;
     }
 
-    p {
+    .LoginSignBody p {
         font-size: 0.8rem;
     }
 }

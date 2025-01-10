@@ -7,10 +7,9 @@ import UpdateDemographic from "../villageManegement/updateDemographic";
 import { gql } from "@apollo/client";
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  // Check if the current user is an admin
   const isAdmin = currentUser && currentUser.role === "admin";
 
-// تعريف استعلام GraphQL لجلب القرى
+
 const GET_VILLAGES = gql`
   query GetVillages {
     villages {
@@ -31,7 +30,7 @@ const GET_VILLAGES = gql`
   }
 `;
 
-// تعريف استعلام GraphQL لحذف قرية
+
 const DELETE_VILLAGE = gql`
   mutation DeleteVillage($id: ID!) {
     deleteVillage(id: $id) {
@@ -47,16 +46,16 @@ const ListVillage = ({ reloadList, searchQuery, sortOption }) => {
   const [isUpdateModalOpen, setIsUpdatModalOpen] = useState(false);
   const [isDemographicModalOpen, setIsDemographicModalOpen] = useState(false);
 
-  // استخدام الاستعلام لجلب البيانات
-  const { loading, error, data, refetch } = useQuery(GET_VILLAGES);
 
-  // استخدام الـ Mutation لحذف قرية
-  const [deleteVillage] = useMutation(DELETE_VILLAGE);
+    const { loading, error, data, refetch } = useQuery(GET_VILLAGES);
 
-  // إعادة تحميل القرى عند تغيير reloadList
-  useEffect(() => {
+
+    const [deleteVillage] = useMutation(DELETE_VILLAGE);
+
+
+    useEffect(() => {
     if (reloadList) {
-      refetch(); // إعادة تحميل البيانات
+      refetch(); 
     }
   }, [reloadList, refetch]);
 
@@ -85,7 +84,7 @@ const ListVillage = ({ reloadList, searchQuery, sortOption }) => {
 
     try {
       await deleteVillage({ variables: { id: villageId } });
-      setVillages(villages.filter((v) => v.id !== villageId)); // تحديث الحالة بعد الحذف
+      setVillages(villages.filter((v) => v.id !== villageId)); 
       alert(`Village with ID: ${villageId} deleted.`);
     } catch (err) {
       console.error("Error deleting village:", err);

@@ -33,6 +33,7 @@
     <li><a href="#coref">Main Features</a></li>
     <li><a href="#corecomp">Core Components</a></li>
     <li><a href="#roles">Roles</a></li>
+    <li><a href="#doc">Documentation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -170,8 +171,6 @@ Please do not place the project folder in another folder. We do not use absolute
 
  <br>
  <br>
- <br>
- <br>
  
   <a name="corecomp"></a>
 ## 🧩 Core Components
@@ -206,9 +205,16 @@ Please do not place the project folder in another folder. We do not use absolute
   <br>
  <br>
 
+ <a name="doc"></a>
+## 📄 Documentation
+
+For in-depth information and a comprehensive guide to the project, please refer to the [Village Management System Documentation](./Village%20Management%20System%20Report.pdf).
+  <br>
+ <br>
+ 
 <a name="contact"></a>
 ## 📱 Contact
-* Haneed Alhaj - haneenradad2013@gmail.com
+* Haneed Alhajali - haneenradad2013@gmail.com
 * Shahd Yaseen - shadthabit@gmail.com
 <br>
   <p align="center"><a href="https://github.com/Haneen-Radad/Advanced-Web/graphs/contributors">

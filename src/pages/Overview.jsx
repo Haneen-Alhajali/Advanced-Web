@@ -30,7 +30,7 @@ Chart.register(
   BarController
 );
 
-// إعداد Apollo Client
+
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
@@ -51,8 +51,8 @@ const Overview = () => {
     console.log("Map Loaded", map);
   }, []);
 
-  // استعلام GraphQL لجلب البيانات
-  const GET_VILLAGES = gql`
+
+    const GET_VILLAGES = gql`
     query GetVillages {
       villages {
         id
@@ -72,8 +72,8 @@ const Overview = () => {
 
   useEffect(() => {
     
-    // جلب البيانات من GraphQL
-    client
+
+        client
       .query({
         query: GET_VILLAGES,
       })
@@ -90,8 +90,8 @@ const Overview = () => {
   const villageNames = villagesData.map((village) => village.name);
   const villagePopulations = villagesData.map((village) => parseFloat(village.population));
 
-  // حساب القيم
-  const totalVillages = villagesData.length;
+
+    const totalVillages = villagesData.length;
   const totalUrbanAreas = villagesData.filter((village) => village.Urban).length;
   const totalPopulation = villagesData.reduce((sum, village) => sum + parseFloat(village.population), 0);
   const averageLandArea = villagesData.reduce((sum, village) => sum + parseFloat(village.land), 0) / totalVillages;

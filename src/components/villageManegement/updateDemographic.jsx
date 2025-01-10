@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useMutation, gql } from "@apollo/client";
 import styles from "../../assets/css/sections/village-management.module.css";
 
-// تعريف Mutation لتحديث البيانات
+
 const UPDATE_VILLAGE_DEMOGRAPHIC = gql`
   mutation UpdateVillage(
     $id: ID!
@@ -35,8 +35,8 @@ const UpdateDemographic = ({ village, onClose, onUpdate }) => {
     growthRate: "",
   });
 
-  // استخدام Apollo Mutation
-  const [updateVillage, { loading, error }] = useMutation(UPDATE_VILLAGE_DEMOGRAPHIC);
+
+    const [updateVillage, { loading, error }] = useMutation(UPDATE_VILLAGE_DEMOGRAPHIC);
 
   useEffect(() => {
     if (village) {
@@ -49,8 +49,8 @@ const UpdateDemographic = ({ village, onClose, onUpdate }) => {
     }
   }, [village]);
 
-  // تحديث الحقول عند إدخال المستخدم
-  const handleInputChange = (e) => {
+
+    const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -58,8 +58,8 @@ const UpdateDemographic = ({ village, onClose, onUpdate }) => {
     }));
   };
 
-  // إرسال البيانات إلى الـ Backend عبر GraphQL
-  const demographicUpdate = async (e) => {
+
+    const demographicUpdate = async (e) => {
     e.preventDefault();
 
     try {

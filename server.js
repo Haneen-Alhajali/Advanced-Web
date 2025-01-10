@@ -5,7 +5,6 @@ const mysql = require("mysql2");
 const app = express();
 const port = 4000;
 
-// إعداد الاتصال بقاعدة البيانات
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -15,7 +14,6 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-// تعريف الـ schema
 const typeDefs = gql`
   type Village {
     id: ID!

@@ -28,8 +28,8 @@ const UpdateVillage = ({ village, onClose }) => {
 
   const [updateVillage] = useMutation(UPDATE_VILLAGE);
 
-  // تحميل البيانات القديمة عند فتح المكون
-  useEffect(() => {
+
+    useEffect(() => {
     if (village) {
       setFormData({
         name: village.name,

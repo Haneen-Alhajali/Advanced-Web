@@ -18,7 +18,7 @@
 
 ### Phases Overview:
 - **Phase 1**: Frontend Development (Completed) – LocalStorage for managing village data.
-- **Phase 2**: Backend Development (Planned) – Integration with Node.js for server-side functionality and future database handling (MongoDB or MySQL).
+- **Phase 2**: Backend Development (Completed) – Integration with Node.js for server-side functionality and database handling ( LocalStorage and MySQL).
 - **Phase 3**: Advanced Features and Data Visualization – Enhanced user interface, interactive elements, and detailed reporting features.
 
 <br>
@@ -31,6 +31,7 @@
     <li><a href="#bw">Built With</a></li>
     <li><a href="#gs">Getting Started</a></li>
     <li><a href="#coref">Main Features</a></li>
+    <li><a href="#corecomp">Core Components</a></li>
     <li><a href="#roles">Roles</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -41,11 +42,23 @@
 
 <a name="bw"></a>
 ## 🔨 Built With
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js (Phase 2 – Planned for server-side functionality)
-- **Database**: LocalStorage (Phase 1), with plans to integrate MongoDB or MySQL in future phases (Phase 2/3)
-- **Libraries/Frameworks**: Bootstrap for styling and responsiveness
-- **Others**: Node.js for backend development (Phase 2), MongoDB or MySQL for database management (Phase 3)
+- **Frontend**:  
+  - HTML, CSS, JavaScript  
+  - **React** for building the user interface and managing state.
+
+- **Backend** (Planned for Phase 2):  
+  - **Node.js** for server-side development.
+  - **WebSocket** for real-time communication (e.g., chat functionality).
+  - **Apollo Server** for handling GraphQL API queries and mutations.
+
+- **Database**:  
+  - **LocalStorage** (Phase 1) for storing data on the client side.
+  - **MySQL** (Phase 2/3) for scalable, server-side data storage.
+
+- **Other Technologies**:  
+  - **Express** for backend routing and server management.
+  - **CORS** to handle cross-origin requests between the frontend and backend.
+  - **fs** for file system interaction (e.g., reading/writing files on the server).
 
 <br>
 <br>
@@ -57,27 +70,74 @@
 ##### 1. Clone the repository:
 > [![Github][Github]][wewe]
 >
-> sh
+> 
 > git clone https://github.com/Haneen-Radad/Advanced-Web.git
 > 
 ##### 2. Navigate to the project directory
 
-> sh
->cd Advanced-Web
-> 
-##### 3. Open the project in your browser
-   - Locate and open the `index.html` file directly in a browser to view the system.
-> 
-##### 4. Run locally (optional)
-   - Use a local server such as Live Server in VS Code for best results.
+   ```bash
+cd Advanced-Web
+   ```
+##### 3. Set up the database:
+First, create and configure the MySQL database. Run the following commands in your MySQL server:
+   ```bash
+CREATE DATABASE VillageDB;
+USE VillageDB;
 
+CREATE TABLE Villages (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  Region VARCHAR(100),
+  land INT,
+  Latitude FLOAT,
+  Longitude FLOAT,
+  Tags VARCHAR(100),
+  img VARCHAR(255),
+  population INT,
+  age VARCHAR(100),
+  gender VARCHAR(100),
+  growthRate FLOAT,
+  Urban BOOLEAN
+);
+
+INSERT INTO Villages (id, name, Region, land, Latitude, Longitude, Tags, img, population, age, gender, growthRate, Urban)
+VALUES
+(1, 'Jabalia', '- Gaza Strip', 10, 31.6, 35.22, 'undifined', 'https://via.placeholder.com/100', 4, '5, 75, 5, 5', '30, 70', 31.6, TRUE),
+(2, 'Beit Lahia', '- Gaza Strip', 15, 31.5, 34.4, 'undifined', 'https://via.placeholder.com/100', 3, '30,60,10', '20', 38, TRUE),
+(3, 'Quds', '- West Bank', 17, 31.76, 35.21, 'undifined', 'https://via.placeholder.com/100', 6, '30,60,10', '50', 64.01, FALSE),
+(4, 'Shejaiya', '- Gaza Strip', 33, 31.26, 35.0, 'undifined', 'https://via.placeholder.com/100', 11, '30,60,10', '90', 8.3, TRUE);
+
+ALTER TABLE Villages MODIFY region VARCHAR(255) NOT NULL;
+   ```
+##### 4. Install dependencies:
+   ```bash
+   npm install
+   ```
+##### 5. Run the server files
+- First, run the `server.js` file:
+   ```bash
+   node server.js
+   ```
+- Then, run the `websocketServer.js` file:
+   ```bash
+   node websocketServer.js
+   ```
+
+##### 6. Run the React project
+Finally, run the React app with npm:
+   ```bash
+npm start
+   ```
+
+##### ⚠️ Important:
+Please do not place the project folder in another folder. We do not use absolute path URLs in this project, so it will break if the folder is moved or nested inside another directory.
 <br>
 <br>
 <br>
 
  <a name="coref"></a>
 
-## 2. Main Features
+## 📌 Main Features
 ### 🛠️ Village Data Management
 - Comprehensive CRUD operations for managing village data, including demographics, geographical information, and resources.
 - Interactive gallery for showcasing village facilities and landmarks.
@@ -94,8 +154,8 @@
 - Personalized recommendations based on village data.
   
 ### ⚙️ Backend Integration (Phase 2)
-- **Server-side support**: Node.js will be integrated to manage village data through API endpoints.
-- **Database Integration**: A future phase will include MongoDB or MySQL integration to ensure reliable and scalable data storage.
+- **Server-side support**: Node.js integrated to manage village data through API endpoints.
+- **Database Integration**:  include LocalStorage & MySQL integration to ensure reliable and scalable data storage.
   <br>
   
 ### 🌱 Phase 3: Advanced Features & Data Visualization
@@ -112,7 +172,28 @@
  <br>
  <br>
  <br>
+ 
+  <a name="corecomp"></a>
+## 🧩 Core Components
+1.  **Landing Page**: A welcoming page with navigation to login/signup.
+   
+2.  **User Authentication**: Allows users to register and log in, with validation to prevent duplicate usernames.
+   
+3.  **Dashboard & Sidebar**: Central navigation hub with access to various sections (Overview, Village Management, Chat, Gallery).
+   
+4.  **Village Overview**: Displays demographic and geographical data using charts and Google Maps
+   
+5.  **Village Management**: Admins can manage village data (CRUD operations) with sorting and pagination features.
+    
+6.  **Chat System**: Real-time communication between users and admins via WebSockets, with persistent chat history.
+    
+7.  **Gallery Section**: Displays and manages village-related images with admin functionality to add new images.
 
+ <br>
+ <br>
+ <br>
+ <br>
+ 
  <a name="roles"></a>
 ## 👥 Roles
 ### 👤 User

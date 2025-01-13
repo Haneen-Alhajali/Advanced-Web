@@ -215,28 +215,28 @@ function loadBarChartOverview(){
 /********************** */
 
         function initMap() {
-            // تحديد المركز الرئيسي للخريطة
-            const centerLocation = { lat: 31.7683, lng: 35.2137 }; // القدس
+            
+            const centerLocation = { lat: 31.7683, lng: 35.2137 }; 
 
-            // إنشاء الخريطة
+           
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 8,
                 center: centerLocation,
             });
 
-            // المواقع التي تريدين عرضها
+            
             const locations = [
-                { lat: 31.7683, lng: 35.2137, title: "القدس" }, // القدس
-                { lat: 32.0853, lng: 34.7818, title: "تل أبيب" }, // تل أبيب
-                { lat: 32.7940, lng: 35.0938, title: "الناصرة" }, // الناصرة
+                { lat: 31.7683, lng: 35.2137, title: "Jerusalem" }, 
+                { lat: 32.0853, lng: 34.7818, title: "talaviv" }, 
+                { lat: 32.7940, lng: 35.0938, title: "nasera" }, 
             ];
 
-            // إضافة العلامات (Markers) لكل موقع
+            
             locations.forEach((location) => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
                     map: map,
-                    title: location.title, // يظهر النص عند الوقوف على العلامة
+                    title: location.title, 
                 });
             });
         }

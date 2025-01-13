@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
           if (file === "gallery.html") {
             galleryGrid.innerHTML = ""; // Clear the gallery grid
 
-            loadScript("/assets/js/data/galleryData.js", () => {
+            loadScript("./../assets/js/data/galleryData.js", () => {
               console.log("galleryData.js loaded");
 
               // Use import to access renderGallery from gallery.js
-              import('/assets/js/gallery.js').then(module => {
+              import('./gallery.js').then(module => {
                 console.log("gallery.js loaded");
                 module.renderGallery(); // Now call the function directly
               }).catch(error => {
@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           
           if (file === "village-management.html") {
-            loadScript("/assets/js/villageManegment.js", () => {
+            loadScript("./../assets/js/villageManegment.js", () => {
               console.log("villagemanag.js loaded");
             });
           }   
 
           // load chat.js if chat page is loaded
           if (file === "chat.html") {
-            loadScript("/assets/js/chat.js", () => {
+            loadScript("./../assets/js/chat.js", () => {
               console.log("chat.js loaded");
             });
           }
@@ -215,28 +215,24 @@ function loadBarChartOverview(){
 /********************** */
 
         function initMap() {
-            
             const centerLocation = { lat: 31.7683, lng: 35.2137 }; 
 
-           
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 8,
                 center: centerLocation,
             });
 
-            
             const locations = [
-                { lat: 31.7683, lng: 35.2137, title: "Jerusalem" }, 
-                { lat: 32.0853, lng: 34.7818, title: "talaviv" }, 
-                { lat: 32.7940, lng: 35.0938, title: "nasera" }, 
+                { lat: 31.7683, lng: 35.2137, title: "القدس" }, 
+                { lat: 32.0853, lng: 34.7818, title: "تل أبيب" },
+                { lat: 32.7940, lng: 35.0938, title: "الناصرة" },
             ];
 
-            
             locations.forEach((location) => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
                     map: map,
-                    title: location.title, 
+                    title: location.title,
                 });
             });
         }

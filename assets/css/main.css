@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    background-image: url('/assets/images/VMS.png');
+    background-image: url('../images/VMS.png');
     background-size: cover;
     background-position: center center;
 }

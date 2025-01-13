@@ -1,77 +1,67 @@
-<link rel="stylesheet" href="/assets/css/sections/overview.css">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-
-    <script defer src="../../assets/js/chartOverview.js"></script>
-</head>
-<body>
 
 
-    <div class="overview">
-        <h1>Overview</h1>
-    
-        <div id="map" class="map">
+<div class="overview">
+    <h1>Overview</h1>
 
-        </div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAywsxQ1DTWXBu1k6GonbudlIYXdQXdOdA&callback=initMap" async defer></script>
-        
-        <script>
-            function initMap() {
-                const location = { lat: 31.7683, lng: 35.2137 }; 
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 8,
-                    center: location,
-                });
-                const marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                });
-            }
-        </script>
-
-
-
-    
-        <div class="stats">
-            <div class="stat-item">
-                <p>Total Number of Villages: 8</p>
-            </div>
-            <div class="stat-item">
-                <p>Total Number of Urban Areas: 3</p>
-            </div>
-            <div class="stat-item">
-                <p>Total Population Size: 660000</p>
-            </div>
-            <div class="stat-item">
-                <p>Average Land Area: 11.88 sq km</p>
-            </div>
-        </div>
-        <div class="charts">
-    
-                <div class="chart-container">
-                    <h3>Age Distribution</h3>
-                    <canvas id="ageChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h3>Gender Ratios</h3>
-                    <canvas id="genderChart"></canvas>
-                </div>
-            
-
-        </div>
-
-        <div class="barChart_container">
-
-            <div class="barChart">
-            
-                <canvas id="barChart"></canvas>
-            
-            </div>
-
-        </div>
-
+    <div id="map" class="map">
 
     </div>
-</body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAywsxQ1DTWXBu1k6GonbudlIYXdQXdOdA&callback=initMap" async defer></script>
+    
+    <script>
+        function initMap() {
+            const location = { lat: 31.7683, lng: 35.2137 }; 
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: location,
+            });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+    </script>
+
+
+
+
+    <div class="stats">
+        <div class="stat-item">
+            <p>Total Number of Villages: 8</p>
+        </div>
+        <div class="stat-item">
+            <p>Total Number of Urban Areas: 3</p>
+        </div>
+        <div class="stat-item">
+            <p>Total Population Size: 660000</p>
+        </div>
+        <div class="stat-item">
+            <p>Average Land Area: 11.88 sq km</p>
+        </div>
+    </div>
+    <div class="charts">
+
+            <div class="chart-container">
+                <h3>Age Distribution</h3>
+                <canvas id="ageChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Gender Ratios</h3>
+                <canvas id="genderChart"></canvas>
+            </div>
+        
+
+    </div>
+
+    <div class="barChart_container">
+
+        <div class="barChart">
+        
+            <canvas id="barChart"></canvas>
+        
+        </div>
+
+    </div>
+
+
+</div>

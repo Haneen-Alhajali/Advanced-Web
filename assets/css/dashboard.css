@@ -1,7 +1,9 @@
 @import 'colors.css';
-@import '/assets/css/sections/gallery.css';
-@import '/assets/css/sections/village-management.css';
-@import '/assets/css/sections/chat.css';
+@import './sections/gallery.css';
+@import './sections/village-management.css';
+@import './sections/chat.css';
+@import './sections/overview.css';
+
 
 body {
     margin: 0;

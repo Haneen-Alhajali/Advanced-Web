@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import styles from '../assets/css/login-signup.module.css';
 import { Link } from "react-router-dom";
 
@@ -18,8 +19,8 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem("token", data.token); // تخزين التوكن
-                localStorage.setItem("currentUser", JSON.stringify(data.user)); // تخزين بيانات المستخدم
+                localStorage.setItem("token", data.token); 
+                localStorage.setItem("currentUser", JSON.stringify(data.user)); 
                 alert(`Welcome, ${data.user.fullName}`);
                 window.location.href = "/dashboard";
             } else {

@@ -1,0 +1,83 @@
+@import 'colors.css';
+/* General Styles */
+.landingBody {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color-dark);
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-image: url('/src/assets/images/VMS.png');
+    background-size: cover;
+    background-position: center center;
+}
+/* Header */
+header {
+    margin: 0;
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(31, 41, 55, 0.7);
+}
+
+/* Landing Page Content */
+.landingContainer {
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+
+.card {
+    width: calc(50% - 2rem);
+    max-width: 300px;
+    min-width: 200px;
+    margin: 1rem;
+    background-color: var(--background-color-light2);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--blue-color-light);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: var(--blue-color-dark);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--background-color-light3);
+    color: var(--text-color-light);
+}
+@media (max-width: 768px) {
+    .landing-container {
+        flex-direction: column; /* Stacks the cards vertically */
+    }
+}

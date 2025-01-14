@@ -1,0 +1,242 @@
+@import '../colors.css';
+
+/* Gallery container */
+.gallery {
+  padding: 10px;
+  color: #fff;
+  overflow: hidden; /* Prevents scrolling within the gallery container */
+}
+
+/* Button styling */
+.galleryAddImageBtn {
+  font-size: .8rem;
+  width: fit-content;
+  background-color: var(--background-color-light3);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.galleryAddImageBtn:hover {
+  background-color: var(--background-color-light2);
+}
+
+/* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures the modal appears above all content */
+}
+
+/* Modal Content */
+.modalContent {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+
+/* Gallery grid styling */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust grid layout */
+  gap: 16px;
+  margin-top: 20px;
+  overflow-x: auto; /* Horizontal scroll if needed */
+  overflow-y: auto; /* Vertical scroll if needed */
+  max-height: 80vh; /* limits vertical height for larger content */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: var(--background-color-light2) #2a2a2a; /* Custom scrollbar for Firefox */
+}
+
+.galleryGrid::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+.galleryGrid::-webkit-scrollbar-thumb {
+  background-color: var(--background-color-light2); /* Custom scrollbar color */
+  border-radius: 4px;
+}
+
+.galleryGrid::-webkit-scrollbar-track {
+  background: #2a2a2a; /* Track color */
+}
+
+/* Gallery item styling */
+.galleryItem {
+  background-color: var(--background-color-light2);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents overflow for images */
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 120px; /* Fixed height to maintain rectangle shape */
+  object-fit: cover; /* Ensures images cover the area while maintaining aspect ratio */
+  border-radius: 5px;
+}
+
+.galleryItem p {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1; /* Ensures text area adapts to available space */
+  display: flex;
+  align-items: center; /* Centers the text vertically */
+}
+
+/* Modal Styles */
+.galleryModal {
+  position: fixed; /* Fixed position */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.galleryModalContent {
+  background-color: var(--background-color-light2);
+  margin: auto; /* Center the modal horizontally */
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  position: relative; /* Ensure relative positioning for contained elements */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust to middle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.galleryImageOption {
+  margin-bottom: 10px;
+  width: 300px;
+
+}
+
+.galleryCloseBtn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.galleryCloseBtn:hover,
+.galleryCloseBtn:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Form Styles */
+#galleryAddImageForm {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.galleryModal label {
+  font-size: 14px;
+  margin: 10px 0 5px; /* Add spacing above the input */
+}
+
+
+.gallerymodalInput , .galleryModal textarea {
+  width: 100%;
+  font-size: 14px;
+
+  padding: 10px;
+  margin-bottom: 15px; /* Add spacing between inputs */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Prevents input overflow */
+}
+
+
+.gallerymodalInput{
+  background-color: var(--background-color-light2);
+}
+
+.galleryModal textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Ensure consistent height */
+}
+
+button.gallerySubmitBtn {
+  background-color: var(--background-color-light4);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.gallerySubmitBtn:hover {
+  background-color: var(--background-color-light3);
+}
+
+/* Responsiveness for smaller devices */
+@media (max-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* More compact grid on smaller screens */
+  }
+
+  .galleryItem img {
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Even smaller columns */
+  }
+
+  .galleryItem img {
+    max-height: 100px;
+  }
+
+  .galleryAddImageBtn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .galleryModalContent {
+    width: 90%; /* Full width on smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .galleryItem img {
+    max-height: 80px;
+  }
+
+  .galleryAddImageBtn {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}

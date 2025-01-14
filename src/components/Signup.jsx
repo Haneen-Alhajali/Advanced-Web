@@ -28,8 +28,8 @@ const Signup = () => {
 
             const data = await response.json();
             alert("Signup successful! You can now log in.");
-            localStorage.setItem("token", data.token); // تخزين التوكن
-            window.location.href = "/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول
+            localStorage.setItem("token", data.token); 
+            window.location.href = "/login"; 
         } catch (error) {
             console.error("Error during signup:", error);
             alert("An error occurred. Please try again later.");

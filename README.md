@@ -72,7 +72,7 @@
 > [![Github][Github]][wewe]
 >
 > 
-> git clone https://github.com/Haneen-Alhajali/Advanced-Web
+> git clone https://github.com/Haneen-Alhajali/Advanced-Web.git
 > 
 ##### 2. Navigate to the project directory
 

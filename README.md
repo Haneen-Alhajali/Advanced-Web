@@ -214,11 +214,11 @@ For in-depth information and a comprehensive guide to the project, please refer 
  
 <a name="contact"></a>
 ## 📱 Contact
-* Haneed Alhajali - haneenradad2013@gmail.com
+* Haneen Alhajali - haneenalhajali2003@gmail.com
 * Shahd Yaseen - shadthabit@gmail.com
 <br>
-  <p align="center"><a href="https://github.com/Haneen-Radad/Advanced-Web/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Haneen-Radad/Advanced-Web" />
+  <p align="center"><a href="https://github.com/Haneen-Alhajali/Advanced-Web/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Haneen-Alhajali/Advanced-Web" />
 </a> </p>
  <p align="right">(<a href="#readme-top">⬆️</a>)</p>
  <br>
@@ -226,5 +226,5 @@ For in-depth information and a comprehensive guide to the project, please refer 
 <br>
 <br>
 
-[wewe]: https://github.com/Haneen-Radad/Advanced-Web.git
+[wewe]: https://github.com/Haneen-Alhajali/Advanced-Web.git
 [Github]: https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white
